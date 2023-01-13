@@ -1,7 +1,7 @@
 <template>
-  <div class="h-[calc(100vh-3rem)] flex flex-col items-center justify-center">
+  <div class="h-screen flex flex-col items-center justify-center relative">
     <div
-      class="text-orange-900 dark:text-orange-200 bg-orange-100 dark:bg-orange-900 p-24 rounded-2xl shadow-lg shadow-orange-900"
+      class="text-orange-900 dark:text-orange-200 backdrop-blur-lg bg-black/20 p-24 rounded-2xl shadow-lg absolute"
     >
       <h3 class="font-bold underline">Log in</h3>
       <form action="" class="flex flex-col">
@@ -10,14 +10,14 @@
           type="text"
           name="username"
           id="username"
-          class="text-orange-900"
+          class="text-orange-900 pl-1"
         />
         <label for="password" class="mt-4 mb-2"> Contraseña: </label>
         <input
-          type="text"
+          type="password"
           name="password"
           id="password"
-          class="text-orange-900"
+          class="text-orange-900 pl-1"
         />
         <a href="/register" class="text-sm mt-4 mb-2"
           >¿No tienes cuenta? Regístrate</a
