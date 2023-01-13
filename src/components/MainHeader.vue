@@ -12,10 +12,10 @@ export default {
   <header
     class="dark:bg-gray-800 w-full h-12 flex items-center text-gray-100 justify-between shadow-2xl fixed z-50"
   >
-    <h1 class="font-abril-fatface text-2xl ml-4 underline"><a href="/">MyMusician</a></h1>
+    <h1 class="font-abril-fatface text-2xl ml-4 hover:scale-110 transition-transform duration-300 underline"><a href="/">MyMusician</a></h1>
     <div>
-      <a v-if="!userAuth()" class="text-xs" href="/login">Log in</a>
-      <a v-if="!userAuth()" href="/register" class="ml-2 mr-4 text-xs">Register</a>
+      <a v-if="!userAuth()" class="text-xs hover:underline" href="/login">Log in</a>
+      <a v-if="!userAuth()" class="ml-2 mr-4 text-xs hover:underline" href="/register">Register</a>
     </div>
   </header>
 </template>
