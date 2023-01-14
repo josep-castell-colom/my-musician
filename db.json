@@ -4,48 +4,54 @@
       "id": 1,
       "name": "Antonio",
       "lastname": "Canales",
-      "instrument": "alto saxophone",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, quisquam.",
+      "age": 25,
+      "instrument": "Saxo alto",
+      "description": "Me gusta mucho la música e ir a la piscina. Mis gafas y mi saxo siempre me acompañan.",
       "imgName": "antonio"
     },
     {
       "id": 2,
       "name": "Carlota",
       "lastname": "Gaviota",
-      "instrument": "spanish guitar",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, quisquam.",
+      "age": 22,
+      "instrument": "Guitarra española",
+      "description": "Adoro tocar la guitarra cuando hace sol, rodeada de mis queridas plantitas verdes.",
       "imgName": "carlota"
     },
     {
       "id": 3,
       "name": "Daniel",
       "lastname": "Gonzáles",
-      "instrument": "tenor saxophone",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, quisquam.",
+      "age": 29,
+      "instrument": "Saxo tenor",
+      "description": "Soy el mejor saxofonista de mi pueblo, pero tengo que tocar en la calle para ganar algo.",
       "imgName": "daniel"
     },
     {
       "id": 4,
       "name": "Jessica",
       "lastname": "Fletcher",
-      "instrument": "piano",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, quisquam.",
+      "age": 28,
+      "instrument": "Piano y voz",
+      "description": "Soy pianista, cantante y compositora, disfruto creando canciones nuevas. También sé tocar un poco la guitarra.",
       "imgName": "jessica"
     },
     {
       "id": 5,
       "name": "Maria",
       "lastname": "Caray",
-      "instrument": "violin",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, quisquam.",
+      "age": 24,
+      "instrument": "Violin",
+      "description": "Mis padres me apuntaron a tocar el violín pero no me gustaba. Ahora me encanta, sobre todo en el bosque.",
       "imgName": "maria"
     },
     {
       "id": 6,
       "name": "Miguel",
       "lastname": "Montiel",
-      "instrument": "electric guitar",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, quisquam.",
+      "age": 20,
+      "instrument": "Guitarra eléctrica",
+      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
       "imgName": "miguel"
     }
   ]
