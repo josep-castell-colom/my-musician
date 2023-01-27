@@ -1,27 +1,63 @@
 <script lang="ts">
-export default {
-  data() {
+import { useFetch } from '@/stores/fetch';
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const { data, error } = useFetch('http://localhost:3000/musicians');
+    let positionStart = true;
+
+    function changePosition() {
+      console.log(positionStart);
+      positionStart = !positionStart;
+    }
+
+    function filterMusicians() {
+      const filteredMusicians = data.filter(m => m.patrons.length === 0);
+      return filteredMusicians;
+    }
+
     return {
-      data: '',
-      error: '',
-      positionStart: true,
+      data,
+      error,
+      positionStart,
+      changePosition,
+      filterMusicians,
     };
   },
-  methods: {
-    fetchData() {
-      fetch('http://localhost:3000/musicians')
-        .then(res => res.json())
-        .then(json => (this.data = json))
-        .catch(err => (this.error = err));
-    },
-    changePosition() {
-      this.positionStart = !this.positionStart;
-    },
-  },
-  created() {
-    this.fetchData();
-  },
-};
+});
+
+// export default {
+//   data() {
+//     return {
+//       musicians: [],
+//       error: '',
+//       positionStart: true,
+//     };
+//   },
+//   methods: {
+//     fetchData() {
+//       fetch('http://localhost:3000/musicians')
+//         .then(res => res.json())
+//         .then(json => (this.musicians = json))
+//         .catch(err => (this.error = err));
+//     },
+//     changePosition() {
+//       this.positionStart = !this.positionStart;
+//     },
+//   },
+//   computed: {
+//     filterMusicians() {
+//       const filteredMusicians = this.musicians.filter(
+//         m => m.patrons.length === 0
+//       );
+//       return filteredMusicians.slice(0, 6);
+//     },
+//   },
+//   created() {
+//     this.fetchData();
+//   },
+// };
 </script>
 
 <template>
@@ -36,9 +72,12 @@ export default {
         class="w-[120rem] h-full flex items-center absolute top-0 transition-transform duration-1000"
         :class="{ left: positionStart, right: !positionStart }"
       >
-        <card-vue v-for="musician in data" :key="musician.id">
+        <card-vue v-for="musician in filterMusicians" :key="musician.id">
           <template #img
-            ><img :src="'src/assets/images/' + musician.imgName + '-sm.jpg'"
+            ><img
+              :src="
+                'src/assets/images/musicians/' + musician.imgName + '-sm.jpg'
+              "
           /></template>
           <template #name>{{ musician.name }}</template>
           <template #description>{{ musician.description }}</template>
@@ -51,7 +90,7 @@ export default {
     </div>
     <div
       v-if="positionStart"
-      @click="changePosition"
+      @click="changePosition()"
       class="border border-solid border-black hover:border-2 hover:border-b-0 hover:border-l-0 border-b-0 border-l-0 w-10 h-10 absolute right-52 top-1/2 -translate-y-1/2 rotate-45"
     ></div>
   </div>

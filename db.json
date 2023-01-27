@@ -1,4 +1,14 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "name": "Josep",
+      "lastname": "Castell",
+      "email": "josep@hola.com",
+      "password": "hola",
+      "myMusicians": [2, 15, 19]
+    }
+  ],
   "musicians": [
     {
       "id": 1,
@@ -7,7 +17,8 @@
       "age": 25,
       "instrument": "Saxo alto",
       "description": "Me gusta mucho la música e ir a la piscina. Mis gafas y mi saxo siempre me acompañan.",
-      "imgName": "antonio"
+      "imgName": "antonio",
+      "patrons": []
     },
     {
       "id": 2,
@@ -16,7 +27,8 @@
       "age": 22,
       "instrument": "Guitarra española",
       "description": "Adoro tocar la guitarra cuando hace sol, rodeada de mis queridas plantitas verdes.",
-      "imgName": "carlota"
+      "imgName": "carlota",
+      "patrons": [1]
     },
     {
       "id": 3,
@@ -25,7 +37,8 @@
       "age": 29,
       "instrument": "Saxo tenor",
       "description": "Soy el mejor saxofonista de mi pueblo, pero tengo que tocar en la calle para ganar algo.",
-      "imgName": "daniel"
+      "imgName": "daniel",
+      "patrons": []
     },
     {
       "id": 4,
@@ -34,7 +47,8 @@
       "age": 28,
       "instrument": "Piano y voz",
       "description": "Soy pianista, cantante y compositora, disfruto creando canciones nuevas. También sé tocar un poco la guitarra.",
-      "imgName": "jessica"
+      "imgName": "jessica",
+      "patrons": []
     },
     {
       "id": 5,
@@ -43,7 +57,8 @@
       "age": 24,
       "instrument": "Violin",
       "description": "Mis padres me apuntaron a tocar el violín pero no me gustaba. Ahora me encanta, sobre todo en el bosque.",
-      "imgName": "maria"
+      "imgName": "maria",
+      "patrons": []
     },
     {
       "id": 6,
@@ -52,7 +67,178 @@
       "age": 20,
       "instrument": "Guitarra eléctrica",
       "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
-      "imgName": "miguel"
+      "imgName": "miguel",
+      "patrons": []
+    },
+    {
+      "id": 7,
+      "name": "Abdullah",
+      "lastname": "Ghatasheh",
+      "age": 34,
+      "instrument": "Contrabajo",
+      "description": "Soy músico autodidacta. Me gusta el swing y la música latin. Me gano la vida tocando en la calle.",
+      "imgName": "abdullah",
+      "patrons": []
+    },
+    {
+      "id": 8,
+      "name": "Anderson",
+      "lastname": "Guerra",
+      "age": 35,
+      "instrument": "Laúd",
+      "description": "Aprendí a tocar el laúd con el de mi difunto abuelo. Luego me compré uno eléctrico.",
+      "imgName": "anderson",
+      "patrons": []
+    },
+    {
+      "id": 9,
+      "name": "Paco",
+      "lastname": "De Lucida",
+      "age": 22,
+      "instrument": "Guitarra española",
+      "description": "Mi vida es el flamenco. Vivo por la música i para la música.",
+      "imgName": "paco",
+      "patrons": []
+    },
+    {
+      "id": 10,
+      "name": "Leo",
+      "lastname": "Wessi",
+      "age": 35,
+      "instrument": "Batería",
+      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "imgName": "leo",
+      "patrons": []
+    },
+    {
+      "id": 11,
+      "name": "Davide",
+      "lastname": "De Giovanni",
+      "age": 26,
+      "instrument": "DJ",
+      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "imgName": "davide",
+      "patrons": []
+    },
+    {
+      "id": 12,
+      "name": "Emmanuel",
+      "lastname": "Slope",
+      "age": 28,
+      "instrument": "Percusión",
+      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "imgName": "emmanuel",
+      "patrons": []
+    },
+    {
+      "id": 13,
+      "name": "Carlos",
+      "lastname": "Tejedor",
+      "age": 39,
+      "instrument": "Bajo eléctrico",
+      "description": "Toco el bajo y tengo un estudio de grabación en casa.",
+      "imgName": "carlos",
+      "patrons": []
+    },
+    {
+      "id": 14,
+      "name": "Isaiah",
+      "lastname": "Colson",
+      "age": 27,
+      "instrument": "Batería",
+      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "imgName": "isaiah",
+      "patrons": []
+    },
+    {
+      "id": 15,
+      "name": "James",
+      "lastname": "Sutton",
+      "age": 78,
+      "instrument": "Acordeón",
+      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "imgName": "james",
+      "patrons": [1]
+    },
+    {
+      "id": 16,
+      "name": "Kaique",
+      "lastname": "Rocha",
+      "age": 23,
+      "instrument": "Voz",
+      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "imgName": "kaique",
+      "patrons": []
+    },
+    {
+      "id": 17,
+      "name": "Mantas",
+      "lastname": "Hesthaven",
+      "age": 31,
+      "instrument": "Batería",
+      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "imgName": "mantas",
+      "patrons": []
+    },
+    {
+      "id": 18,
+      "name": "Mwa",
+      "lastname": "Bonje",
+      "age": 20,
+      "instrument": "Voz",
+      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "imgName": "mwa",
+      "patrons": []
+    },
+    {
+      "id": 19,
+      "name": "John",
+      "lastname": "Caige",
+      "age": 19,
+      "instrument": "Bajo eléctrico",
+      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "imgName": "john",
+      "patrons": [1]
+    },
+    {
+      "id": 20,
+      "name": "Sandra",
+      "lastname": "Hudson",
+      "age": 21,
+      "instrument": "Bajo eléctrico",
+      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "imgName": "sandra",
+      "patrons": []
+    },
+    {
+      "id": 21,
+      "name": "Thibault",
+      "lastname": "Trillet",
+      "age": 28,
+      "instrument": "Ukelele",
+      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "imgName": "thibault",
+      "patrons": []
+    },
+    {
+      "id": 22,
+      "name": "Ahmed",
+      "lastname": "Trillet",
+      "age": 24,
+      "instrument": "Voz",
+      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "imgName": "ahmed",
+      "patrons": []
+    },
+    {
+      "id": 23,
+      "name": "Kurt",
+      "lastname": "Cobalt",
+      "age": 23,
+      "instrument": "Bajo eléctrico",
+      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "imgName": "kurt",
+      "patrons": []
     }
   ]
 }
