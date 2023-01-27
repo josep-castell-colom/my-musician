@@ -1,31 +1,25 @@
-<script lang="ts">
-import { useFetch } from '@/stores/fetch';
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import { storeToRefs } from "pinia";
+import { useMusiciansStore } from "@/stores/musicians";
+import type Musician from "@/types/Musician";
 
-export default defineComponent({
-  setup() {
-    const { data, error } = useFetch('http://localhost:3000/musicians');
-    let positionStart = true;
+const store = useMusiciansStore();
 
-    function changePosition() {
-      console.log(positionStart);
-      positionStart = !positionStart;
-    }
+const { musicians } = useMusiciansStore();
+const { fetchMusicians } = useMusiciansStore();
+const { getMusiciansWithNoPatrons } = useMusiciansStore();
 
-    function filterMusicians() {
-      const filteredMusicians = data.filter(m => m.patrons.length === 0);
-      return filteredMusicians;
-    }
+await fetchMusicians();
 
-    return {
-      data,
-      error,
-      positionStart,
-      changePosition,
-      filterMusicians,
-    };
-  },
-});
+const error = null; // borrar
+let positionStart = true;
+
+const filteredMusicians = store.musicians.filter((musician: Musician) => musician.patrons.length === 0).slice(0,6);
+
+function changePosition() {
+  positionStart = !positionStart;
+  console.log(positionStart);
+}
 
 // export default {
 //   data() {
@@ -72,11 +66,11 @@ export default defineComponent({
         class="w-[120rem] h-full flex items-center absolute top-0 transition-transform duration-1000"
         :class="{ left: positionStart, right: !positionStart }"
       >
-        <card-vue v-for="musician in filterMusicians" :key="musician.id">
+        <card-vue v-for="musician in filteredMusicians" :key="musician['id']">
           <template #img
             ><img
               :src="
-                'src/assets/images/musicians/' + musician.imgName + '-sm.jpg'
+                'src/assets/images/musicians/' + musician['imgName'] + '-sm.jpg'
               "
           /></template>
           <template #name>{{ musician.name }}</template>

@@ -30,7 +30,6 @@ import CardsCarousel from '@/components/CardsCarousel.vue';
         <p class="text-orange-200 drop-shadow-md mt-7 leading-7 lg:text-lg">
           ¡Él lo haría por tí!
         </p>
-        <!-- <div class="w-px h-5 mt-4 mx-auto bg-white"></div> -->
         <img
           class="mx-auto w-96 my-8"
           src="src/assets/DecorativeDivider101.svg"
@@ -50,7 +49,9 @@ import CardsCarousel from '@/components/CardsCarousel.vue';
         L@s siguientes músic@s están sin apadrinar... :(
       </h2>
       <div class="container w-screen flex justify-center items-center">
-        <CardsCarousel />
+        <Suspense>
+          <CardsCarousel />
+        </Suspense>
       </div>
       <router-link to="/explore">
         <button
