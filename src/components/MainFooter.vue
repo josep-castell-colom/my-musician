@@ -1,10 +1,12 @@
 <template>
   <div class="relative bg-black w-full text-white">
-    <div class="relative w-3/4 lg:w-1/2 h-full mx-auto">
+    <div
+      class="relative pl-8 sm:pr-8 lg:px-0 w-full md:w-3/4 xl:w-1/2 h-full mx-auto"
+    >
       <div class="pt-12 flex justify-between">
         <div class="pt-12 flex flex-col mr-12">
           <h3 class="lg:text-lg text-gray-400">Descubre músic@s</h3>
-          <div class="flex">
+          <div class="flex flex-col w-1/2 sm:flex-row sm:w-auto">
             <div class="flex flex-col mr-24">
               <router-link to="" class="footer-link">Cantantes</router-link>
               <router-link to="" class="footer-link">Guitarristas</router-link>
@@ -33,22 +35,29 @@
             </div>
           </div>
         </div>
-        <div class="pt-12 flex flex-col mr-12">
-          <h3 class="lg:text-lg text-gray-400">Sobre MyMusician</h3>
-          <router-link to="" class="footer-link">¿Quienes somos?</router-link>
-          <router-link to="" class="footer-link"
-            >Nuestra trayectoria</router-link
-          >
-          <router-link to="" class="footer-link"
-            >Preocupación hacia l@s músic@s</router-link
-          >
-        </div>
-        <div class="pt-12 flex flex-col">
-          <h3 class="lg:text-lg text-gray-400">Síguenos</h3>
-          <router-link to="" class="footer-link">Facebook</router-link>
-          <router-link to="" class="footer-link">Twitter</router-link>
-          <router-link to="" class="footer-link">Instagram</router-link>
-          <router-link to="" class="footer-link">YouTube</router-link>
+        <div class="flex flex-col w-1/2 sm:flex-row sm:w-auto">
+          <div class="pt-12 flex flex-col mr-12">
+            <h3 class="lg:text-lg text-gray-400">
+              Sobre
+              <span class="font-abril-fatface italic underline text-gray-300"
+                >MyMusician</span
+              >
+            </h3>
+            <router-link to="" class="footer-link">¿Quienes somos?</router-link>
+            <router-link to="" class="footer-link"
+              >Nuestra trayectoria</router-link
+            >
+            <router-link to="" class="footer-link"
+              >Preocupación hacia l@s músic@s</router-link
+            >
+          </div>
+          <div class="pt-12 flex flex-col">
+            <h3 class="lg:text-lg text-gray-400">Síguenos</h3>
+            <router-link to="" class="footer-link">Facebook</router-link>
+            <router-link to="" class="footer-link">Twitter</router-link>
+            <router-link to="" class="footer-link">Instagram</router-link>
+            <router-link to="" class="footer-link">YouTube</router-link>
+          </div>
         </div>
       </div>
       <div class="pt-12 flex flex-col">

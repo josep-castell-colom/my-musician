@@ -43,9 +43,9 @@ import CardsCarousel from '@/components/CardsCarousel.vue';
       </div>
     </div>
     <div
-      class="w-full min-h-screen -mb-40 relative z-20 bg-orange-100 flex flex-col justify-center items-center"
+      class="w-full min-h-screen -mb-40 pb-12 relative z-20 bg-orange-100 flex flex-col justify-center items-center"
     >
-      <h2 class="font-bold mb-16 mt-14 text-center">
+      <h2 class="text-gray-900 font-bold mb-4 md:mb-16 md:mt-14 text-center">
         L@s siguientes músic@s están sin apadrinar... :(
       </h2>
       <div class="container w-screen flex justify-center items-center">
@@ -55,14 +55,14 @@ import CardsCarousel from '@/components/CardsCarousel.vue';
       </div>
       <router-link to="/explore">
         <button
-          class="mt-20 p-4 rounded-full text-white hover:drop-shadow-lg hover:scale-105 transition-transform duration-300 font-bold bg-orange-800"
+          class="mt-12 md:mt-20 p-4 rounded-full text-white hover:drop-shadow-lg hover:scale-105 transition-transform duration-300 font-bold bg-orange-800"
         >
           Sigue buscando
         </button>
       </router-link>
     </div>
     <svg
-      class="relative z-10 bg-orange-100 -mt-30 -mb-1"
+      class="relative z-10 bg-orange-100 mt-8 xl:-mt-30 -mb-1"
       viewBox="0 0 1440 320"
     >
       <path
@@ -72,7 +72,7 @@ import CardsCarousel from '@/components/CardsCarousel.vue';
       ></path>
     </svg>
     <div
-      class="w-full min-h-screen relative z-20 bg-orange-800 flex flex-col justify-center items-center"
+      class="w-full min-h-screen relative z-20 pt-12 bg-orange-800 flex flex-col justify-center items-center"
     >
       <div class="bg-orange-100 p-6 my-8 rounded-lg">
         <img
@@ -91,10 +91,10 @@ import CardsCarousel from '@/components/CardsCarousel.vue';
         <h2
           class="inline-block text-5xl font-bold text-orange-400 drop-shadow-xl"
         >
-          pero no lo son.
+          pero no lo son
         </h2>
         <p
-          class="w-[50vw] text-gray-200 drop-shadow-md leading-7 lg:text-lg mt-10"
+          class="xl:w-[50vw] text-gray-200 drop-shadow-md leading-7 lg:text-lg mt-10 mx-auto"
         >
           L@s músic@s promedio tienen muchas dificultades para llegar a fin de
           mes y pagar sus alquileres.<br />
@@ -102,7 +102,8 @@ import CardsCarousel from '@/components/CardsCarousel.vue';
         </p>
         <p class="text-gray-200 drop-shadow-md mt-4 leading-7 lg:text-lg">
           Con una pequeña ayuda podrán vivir más tranquilos y sentir que han
-          elegido una profesión <span class="bg-gray-700">digna</span>.
+          elegido una profesión
+          <span class="bg-gray-700 p-2 rounded-lg font-bold">digna</span>.
         </p>
         <router-link to="/explore">
           <button
@@ -121,7 +122,7 @@ import CardsCarousel from '@/components/CardsCarousel.vue';
       ></path>
     </svg>
     <div
-      class="w-full min-h-screen relative z-20 bg-orange-100 flex justify-center items-center"
+      class="w-full min-h-screen relative z-20 bg-orange-100 flex flex-col md:flex-row justify-center items-center"
     >
       <div class="bg-gray-900 p-6 my-8 rounded-lg">
         <img
@@ -130,9 +131,9 @@ import CardsCarousel from '@/components/CardsCarousel.vue';
           class="rounded-lg"
         />
       </div>
-      <div class="text-left pl-16 max-w-[50vw]">
+      <div class="text-left px-6 pb-16 md:pl-16 md:max-w-[50vw]">
         <h2
-          class="inline-block text-5xl font-bold text-orange-400 drop-shadow-md"
+          class="inline-block text-7xl font-bold text-orange-400 drop-shadow-md"
         >
           Sin tu ayuda
         </h2>
@@ -140,16 +141,26 @@ import CardsCarousel from '@/components/CardsCarousel.vue';
         <h2
           class="inline-block text-5xl font-bold text-orange-800 drop-shadow-md"
         >
-          podrían acabar así.
+          podrían acabar así
         </h2>
-        <p class="w-[50vw] text-gray-900 leading-7 lg:text-lg mt-10">
-          L@s músic@s promedio tienen muchas dificultades para llegar a fin de
-          mes y pagar sus alquileres.<br />
-          El guitarrista principal no tiene dinero ni para comprar zapatos.<br />
+        <p class="md:max-w-[50vw] text-gray-900 leading-7 lg:text-lg mt-10">
+          <span class="text-lg font-bold text-gray-900"
+            >SEGÚN ESTUDIOS OFICIALES</span
+          >, un <span class="text-red-500 font-bold text-xl">83%</span> de la
+          población que elige la música como vocación termina tocando en la
+          calle o cambiando de profesión.
+        </p>
+        <p class="text-gray-900 mt-1 leading-7 lg:text-lg">
+          Esto provoca que muy pocos elijan éste camino, lo que se traduce en un
+          <span class="text-orange-700">decremento de la cultura</span>.<br />
         </p>
         <p class="text-gray-900 mt-4 leading-7 lg:text-lg">
-          Con una pequeña ayuda podrán vivir más tranquilos y sentir que han
-          elegido una profesión digna.
+          Tu aportación, <span class="italic">por pequeña que sea</span>,
+          ayudará no sólo a l@s músic@s,<br />
+          sinó a la
+          <span class="font-bold text-gray-900"
+            >evolución de la cultura y el arte</span
+          >.
         </p>
         <router-link to="/explore">
           <button

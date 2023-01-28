@@ -1,25 +1,32 @@
+<script lang="ts">
+export default {
+  data() {
+    return {
+      positionStart: true,
+    };
+  },
+  methods: {
+    changePosition() {
+      this.positionStart = !this.positionStart;
+    },
+  },
+};
+</script>
+
 <script lang="ts" setup>
-import { storeToRefs } from "pinia";
-import { useMusiciansStore } from "@/stores/musicians";
-import type Musician from "@/types/Musician";
+import { useMusiciansStore } from '@/stores/musicians';
+import type Musician from '@/types/Musician';
+const { fetchMusicians } = useMusiciansStore();
 
 const store = useMusiciansStore();
-
-const { musicians } = useMusiciansStore();
-const { fetchMusicians } = useMusiciansStore();
-const { getMusiciansWithNoPatrons } = useMusiciansStore();
 
 await fetchMusicians();
 
 const error = null; // borrar
-let positionStart = true;
 
-const filteredMusicians = store.musicians.filter((musician: Musician) => musician.patrons.length === 0).slice(0,6);
-
-function changePosition() {
-  positionStart = !positionStart;
-  console.log(positionStart);
-}
+const filteredMusicians = store.musicians
+  .filter((musician: Musician) => musician.patrons.length === 0)
+  .slice(0, 6);
 
 // export default {
 //   data() {
@@ -59,9 +66,11 @@ function changePosition() {
     <div
       v-if="!positionStart"
       @click="changePosition"
-      class="border border-solid border-black hover:border-2 hover:border-b-0 hover:border-r-0 border-b-0 border-r-0 w-10 h-10 absolute left-52 top-1/2 -translate-y-1/2 -rotate-45"
+      class="hidden lg:block border border-solid border-black hover:border-2 hover:border-b-0 hover:border-r-0 border-b-0 border-r-0 w-10 h-10 absolute left-0 xl:left-20 2xl:left-52 top-1/2 -translate-y-1/2 -rotate-45"
     ></div>
-    <div class="flex w-[60rem] h-[34rem] mx-auto relative overflow-hidden">
+    <div
+      class="flex w-[20rem] md:w-[40rem] lg:w-[60rem] h-[34rem] mx-auto relative overflow-x-scroll lg:overflow-hidden"
+    >
       <div
         class="w-[120rem] h-full flex items-center absolute top-0 transition-transform duration-1000"
         :class="{ left: positionStart, right: !positionStart }"
@@ -85,7 +94,7 @@ function changePosition() {
     <div
       v-if="positionStart"
       @click="changePosition()"
-      class="border border-solid border-black hover:border-2 hover:border-b-0 hover:border-l-0 border-b-0 border-l-0 w-10 h-10 absolute right-52 top-1/2 -translate-y-1/2 rotate-45"
+      class="hidden lg:block border border-solid border-black hover:border-2 hover:border-b-0 hover:border-l-0 border-b-0 border-l-0 w-10 h-10 absolute right-0 xl:right-20 2xl:right-52 top-1/2 -translate-y-1/2 rotate-45"
     ></div>
   </div>
   <div v-if="error">
