@@ -1,17 +1,22 @@
 <template>
   <div
-    class="relative mx-4 w-80 h-[30rem] cursor-pointer rounded-lg border-1 border-black border hover:scale-105 transition-transform duration-300 overflow-hidden bg-orange-100 shadow-inner hover:shadow-xl"
+    class="group flex flex-col relative mx-4 w-80 min-h-[26rem] cursor-pointer rounded-sm border-1 border-gray-500 border hover:scale-105 transition-transform duration-300 overflow-hidden bg-white shadow-inner hover:shadow-xl"
   >
     <div class="aspect-video overflow-hidden"><slot name="img"></slot></div>
-    <div class="p-10">
+    <div class="py-6 px-8 flex-grow">
       <h3 class="font-bold"><slot name="name"></slot></h3>
-      <p class="mt-3"><slot name="description"></slot></p>
+      <p class="mt-3 text-gray-800"><slot name="description"></slot></p>
     </div>
     <div
-      class="absolute w-full py-6 px-10 bottom-0 border-t border-t-gray-500 bg-orange-200 shadow-inner"
+      class="relative w-full h-full py-6 px-10 bottom-0 border-t border-t-gray-400 bg-orange-100 shadow-inner text-center group-hover:text-left"
     >
-      <p class="text-sm"><slot name="instrument"></slot></p>
-      <p class="text-sm"><slot name="age"></slot></p>
+      <p class="text-gray-600 group-hover:hidden">Más info</p>
+      <div class="hidden group-hover:block">
+        <p class="text-gray-500 font-bold">Instrumento: <span class="text-gray-800"><slot name="instrument"></slot></span></p>
+        <p class="text-gray-500 font-bold">Rol: <span class="text-gray-800"><slot name="rol"></slot></span></p>
+        <p class="text-gray-500">Edad: <span class="text-gray-800"><slot name="age"></slot></span></p>
+        <p class="text-gray-500">Padrinos: <span class="text-gray-800"><slot name="patrons"></slot></span></p>
+      </div>
     </div>
   </div>
 </template>

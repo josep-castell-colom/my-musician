@@ -12,12 +12,13 @@
   "musicians": [
     {
       "id": 1,
-      "name": "Antonio",
-      "lastname": "Canales",
-      "age": 25,
-      "instrument": "Saxo alto",
-      "description": "Me gusta mucho la música e ir a la piscina. Mis gafas y mi saxo siempre me acompañan.",
-      "imgName": "antonio",
+      "name": "Giussep",
+      "lastname": "Kastei",
+      "age": 33,
+      "instrument": "Bajo eléctrico",
+      "rol": "De sesión",
+      "description": "Tengo que hacer páginas web para labrarme un futuro prometedor.",
+      "imgName": "giussep",
       "patrons": []
     },
     {
@@ -238,6 +239,17 @@
       "instrument": "Bajo eléctrico",
       "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
       "imgName": "kurt",
+      "patrons": []
+    },
+    {
+      "id": 24,
+      "name": "Antonio",
+      "lastname": "Canales",
+      "age": 25,
+      "instrument": "Saxo alto",
+      "rol": "Solista",
+      "description": "Me gusta mucho la música e ir a la piscina. Mis gafas y mi saxo siempre me acompañan.",
+      "imgName": "antonio",
       "patrons": []
     }
   ]

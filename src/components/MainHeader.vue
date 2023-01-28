@@ -12,7 +12,7 @@ export default {
   mounted() {
     this.checkWidth();
   },
-  destroyed() {
+  unmounted() {
     window.removeEventListener('resize', this.checkWidth);
   },
   methods: {
@@ -28,7 +28,7 @@ export default {
 
 <template>
   <header
-    class="dark:bg-gray-800/80 backdrop-blur-md w-full h-12 flex items-center text-gray-100 justify-between shadow-2xl fixed z-50"
+    class="bg-gray-800/80 backdrop-blur-md w-full h-12 flex items-center text-gray-100 justify-between shadow-2xl fixed z-50"
     :class="{ solid: burguerActive }"
   >
     <router-link to="/">
