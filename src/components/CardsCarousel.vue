@@ -69,7 +69,7 @@ const filteredMusicians = store.musicians
       class="hidden absolute left-0 top-1/2 w-10 h-10 border border-r-0 border-b-0 border-black border-solid -rotate-45 -translate-y-1/2 lg:block hover:border-2 hover:border-b-0 hover:border-r-0 2xl:left-20"
     ></div>
     <div
-      class="flex w-[20rem] md:w-[40rem] lg:w-[60rem] h-[35rem] overflow-x-scroll lg:overflow-x-hidden  mx-auto relative"
+      class="flex w-[20rem] md:w-[40rem] lg:w-[60rem] h-[40rem] overflow-x-scroll lg:overflow-x-hidden mx-auto relative"
     >
       <div
         class="w-[120rem] h-full flex items-center absolute top-0 transition-transform duration-1000"
@@ -84,9 +84,7 @@ const filteredMusicians = store.musicians
           /></template>
           <template #name>{{ musician.name }} {{ musician.lastname }}</template>
           <template #description>{{ musician.description }}</template>
-          <template #instrument
-            >{{ musician.instrument }}</template
-          >
+          <template #instrument>{{ musician.instrument }}</template>
           <template #rol>{{ musician.rol }}</template>
           <template #age>{{ musician.age }}</template>
           <template #patrons>{{ musician.patrons.length }}</template>
