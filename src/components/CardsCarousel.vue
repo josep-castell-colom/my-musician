@@ -49,7 +49,7 @@ export default {
     checkTopPosition(){
       if(this.xlScreen && this.position === 4) { this.topPosition = true; return }
       if(this.screenSize === 'md' && this.position === 5) { this.topPosition = true; return }
-      if(this.screenSize === 'sm' && this.position === 6) { this.topPosition = true; return }
+      if(this.position === 6) { this.topPosition = true; return }
       this.topPosition = false;
     },
     handlerDown() {
