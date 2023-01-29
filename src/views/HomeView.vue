@@ -6,6 +6,7 @@ export default {
   data() {
     return {
       xlScreen: false,
+      screenSize: '',
     }
   },
   created() {
@@ -20,7 +21,27 @@ export default {
   methods: {
     checkWidth() {
       this.xlScreen = window.innerWidth >= 1280;
+      this.screenSize = this.getScreenSize();
     },
+    getScreenSize() {
+      const width = window.innerWidth;
+      if(width <= 640){
+        return 'xs';
+      }
+      if(width <= 768){
+        return 'sm';
+      }
+      if(width <= 1024){
+        return 'md';
+      }
+      if(width <= 1280){
+        return 'lg';
+      }
+      if(width <= 1536){
+        return 'xl';
+      }
+      return '2xl';
+    }
   },
 }
 </script>
@@ -68,17 +89,17 @@ export default {
     <div
       class="w-full py-40 -mb-[10vw] lg:pb-12 relative z-20 bg-orange-100 flex flex-col justify-center items-center"
     >
-      <h2 class="mb-4 text-xl text-center text-gray-900 lg:text-2xl md:mb-8">
+      <h2 class="text-xl text-center text-gray-900 lg:text-2xl">
         L@s siguientes músic@s están sin apadrinar... :(
       </h2>
-      <div class="container flex overflow-y-visible justify-center items-center w-screen">
+      <div class="flex justify-center items-center">
         <Suspense>
-          <CardsCarousel />
+          <CardsCarousel :xl-screen="xlScreen" :screen-size="screenSize"/>
         </Suspense>
       </div>
       <router-link to="/explore">
         <button
-          class="p-4 mt-12 font-bold text-white bg-orange-800 rounded-full transition-transform duration-300 md:mt-20 hover:drop-shadow-lg hover:scale-105 hover:bg-orange-600"
+          class="p-4 font-bold text-white bg-orange-800 rounded-full transition-transform duration-300 hover:drop-shadow-lg hover:scale-105 hover:bg-orange-600"
         >
           Sigue buscando
         </button>
