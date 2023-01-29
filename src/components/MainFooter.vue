@@ -3,7 +3,7 @@
     <div
       class="relative pl-8 sm:pr-8 lg:px-0 w-full md:w-3/4 xl:w-1/2 h-full mx-auto"
     >
-      <div class="2xl:px-40">
+      <div class="min-[2100px]:px-40">
         <div class="pt-12 flex justify-between">
           <div class="pt-12 flex flex-col md:mr-12">
             <h3 class="lg:text-lg text-gray-400">Descubre músic@s</h3>
