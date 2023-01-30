@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import CardsCarousel from '@/components/CardsCarousel.vue';
+import Footer from '@/components/MainFooter.vue';
 </script>
 <script lang="ts">
 export default {
@@ -241,4 +242,5 @@ export default {
       </div>
     </div>
   </div>
+  <Footer />
 </template>

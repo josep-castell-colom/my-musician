@@ -22,18 +22,22 @@ export default {
     checkWidth() {
       this.burguer = window.innerWidth <= 1024;
     },
+    toggleBurguerActive() {
+      this.burguerActive = !this.burguerActive;
+    },
   },
 };
 </script>
 
 <template>
   <header
-    class="bg-gray-800/80 backdrop-blur-md w-full h-12 flex items-center text-gray-100 justify-between shadow-2xl fixed z-50"
+    class="flex fixed z-50 justify-between items-center w-full h-12 text-gray-100 shadow-2xl backdrop-blur-md bg-gray-800/80"
     :class="{ solid: burguerActive }"
   >
     <router-link to="/">
       <div
-        class="ml-2 flex items-center hover:scale-110 transition-transform duration-300"
+        class="flex items-center ml-2 transition-transform duration-300 hover:scale-110"
+        @click="burguerActive = false"
       >
         <svg
           fill="#ffffff"
@@ -73,7 +77,7 @@ export default {
             </g>
           </g>
         </svg>
-        <h1 class="font-abril-fatface text-2xl ml-1 italic underline">
+        <h1 class="ml-1 text-2xl italic underline font-abril-fatface">
           MyMusician
         </h1>
       </div>
@@ -90,19 +94,20 @@ export default {
       <nav class="flex items-center">
         <router-link
           to="/explore"
-          class="mx-4 inline-block hover:underline hover:scale-110 transition-transform duration-300"
+          @click="toggleBurguerActive"
+          class="inline-block mx-4 transition-transform duration-300 hover:underline hover:scale-110"
           >Explora</router-link
         >
-        <div class="relative bg-white flex items-center rounded-full mr-4 p-1">
+        <div class="flex relative items-center p-1 mr-4 bg-white rounded-full">
           <input
             type="text"
             name="search"
             id="search"
-            class="rounded-full text-gray-900 text-sm pl-1"
+            class="pl-1 text-sm text-gray-900 rounded-full"
             placeholder="¿Qué estás buscando?"
           />
           <div
-            class="absolute right-3 cursor-pointer hover:scale-150 transition-transform duration-300"
+            class="absolute right-3 transition-transform duration-300 cursor-pointer hover:scale-150"
           >
             <svg
               viewBox="0 0 24 24"
@@ -137,29 +142,32 @@ export default {
           </div>
         </div>
       </nav>
-      <div v-if="!burguer" class="h-1/2 w-px bg-white"></div>
-      <div class="mx-4 flex items-center">
+      <div id="nav-separator" class="w-px h-1/2 bg-white"></div>
+      <div id="nav-user" class="flex items-center mx-4">
         <router-link
           to="/login"
+          @click="toggleBurguerActive"
           v-if="!userAuth()"
-          class="text-xs inline-block hover:underline hover:scale-110 transition-transform duration-300"
+          class="inline-block text-xs transition-transform duration-300 hover:underline hover:scale-110"
           >Log in</router-link
         >
         <router-link
-          v-if="!userAuth()"
-          class="ml-2 text-xs inline-block hover:underline hover:scale-110 transition-transform duration-300"
           to="/register"
+          @click="toggleBurguerActive"
+          v-if="!userAuth()"
+          class="inline-block ml-2 text-xs transition-transform duration-300 hover:underline hover:scale-110"
           >Register</router-link
         >
       </div>
     </div>
     <div
-      class="h-6 w-7 mr-4 relative flex flex-col items-center justify-between scale-90 hover:scale-100 transition-transform duration-300 lg:hidden"
-      @click="burguerActive = !burguerActive"
+      class="flex relative flex-col justify-between items-center mr-4 w-7 h-6 transition-transform duration-300 scale-90 hover:scale-100 lg:hidden"
+      :class="{ burguerShown: burguerActive}"
+      @click="toggleBurguerActive"
     >
-      <span class="w-full h-1 block bg-white rounded-md"></span>
-      <span class="w-full h-1 block bg-white rounded-md"></span>
-      <span class="w-full h-1 block bg-white rounded-md"></span>
+      <span class="block w-full h-1 bg-white rounded-md transition-transform duration-300" id="burguer-span-1"></span>
+      <span class="block w-full h-1 bg-white rounded-md transition-transform duration-300" id="burguer-span-2"></span>
+      <span class="block w-full h-1 bg-white rounded-md transition-transform duration-300" id="burguer-span-3"></span>
     </div>
   </header>
 </template>
@@ -180,10 +188,42 @@ export default {
   align-items: center;
   justify-content: center;
 }
+.burguerOn.burguerShown nav {
+  flex-direction: column;
+  height: 30vh;
+  justify-content: space-around;
+  font-size: 1.5rem;
+}
+.burguerOn.burguerShown nav > div {
+  margin-right: 0;
+}
+.burguerOn.burguerShown #nav-separator {
+  width: 50%;
+  height: 1px;
+  margin: 10vh 0;
+}
+.burguerOn.burguerShown #nav-user {
+  flex-direction: column;
+  justify-content: space-around;
+  height: calc(20vh);
+}
+.burguerOn.burguerShown #nav-user * {
+  font-size: 1.5rem;
+  margin: 0;
+}
+.burguerShown #burguer-span-1 {
+  transform: rotate(45deg) translate(10px, 10px);
+}
+.burguerShown #burguer-span-2 {
+  transform: scale(0);
+}
+.burguerShown #burguer-span-3 {
+  transform: rotate(-45deg) translate(10px, -10px);
+}
 .burguerOn.burguerHidden {
   display: none;
 }
 .solid {
-  opacity: 1;
+  background-color: rgb(31, 41, 55);
 }
 </style>
