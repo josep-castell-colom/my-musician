@@ -8,7 +8,7 @@ export default {
     return {
       xlScreen: false,
       screenSize: '',
-    }
+    };
   },
   created() {
     window.addEventListener('resize', this.checkWidth);
@@ -26,25 +26,25 @@ export default {
     },
     getScreenSize() {
       const width = window.innerWidth;
-      if(width <= 640){
+      if (width <= 640) {
         return 'xs';
       }
-      if(width <= 768){
+      if (width <= 768) {
         return 'sm';
       }
-      if(width <= 1024){
+      if (width <= 1024) {
         return 'md';
       }
-      if(width <= 1280){
+      if (width <= 1280) {
         return 'lg';
       }
-      if(width <= 1536){
+      if (width <= 1536) {
         return 'xl';
       }
       return '2xl';
-    }
+    },
   },
-}
+};
 </script>
 
 <template>
@@ -61,14 +61,18 @@ export default {
           Adopta un músico
         </h1>
         <hr class="mx-auto my-8 w-1/2" />
-        <p class="leading-7 text-gray-200 drop-shadow-md lg:text-xl 2xl:text-2xl">
+        <p
+          class="leading-7 text-gray-200 drop-shadow-md lg:text-xl 2xl:text-2xl"
+        >
           A parte de l@s famos@s músic@s ‘trending topic’, l@s demás pasan
           <span class="text-orange-200">hambre</span> y
           <span class="text-orange-200">frío</span> en la calle.<br />
           Nosotros te damos la posibilidad de adoptar una de estas criaturas
           para que su vida sea un poco más fácil.<br />
         </p>
-        <p class="mt-4 leading-7 text-gray-200 drop-shadow-md lg:text-xl 2xl:text-2xl">
+        <p
+          class="mt-4 leading-7 text-gray-200 drop-shadow-md lg:text-xl 2xl:text-2xl"
+        >
           Puedes elegir la que más te guste y mejor se adapte a tus
           posibilidades económicas.
         </p>
@@ -90,12 +94,12 @@ export default {
     <div
       class="w-full py-40 -mb-[10vw] lg:pb-12 relative z-20 bg-orange-100 flex flex-col justify-center items-center"
     >
-      <h2 class="text-xl text-center text-gray-900 lg:text-2xl">
-        L@s siguientes músic@s están sin apadrinar... :(
+      <h2 class="text-xl font-bold text-center text-gray-800 lg:text-2xl">
+        Elige a alguien sin apadrinar:
       </h2>
       <div class="flex justify-center items-center">
         <Suspense>
-          <CardsCarousel :xl-screen="xlScreen" :screen-size="screenSize"/>
+          <CardsCarousel :xl-screen="xlScreen" :screen-size="screenSize" />
         </Suspense>
       </div>
       <router-link to="/explore">
@@ -152,7 +156,9 @@ export default {
           mes y pagar sus alquileres.<br />
           El guitarrista principal no tiene dinero ni para comprar zapatos.<br />
         </p>
-        <p class="mt-4 leading-7 text-gray-200 drop-shadow-md lg:text-lg 2xl:text-2xl">
+        <p
+          class="mt-4 leading-7 text-gray-200 drop-shadow-md lg:text-lg 2xl:text-2xl"
+        >
           Con una pequeña ayuda podrán vivir más tranquilos y sentir que han
           elegido una profesión
           <span class="p-2 font-bold bg-gray-700 rounded-lg">digna</span>.
@@ -176,7 +182,9 @@ export default {
     <div
       class="flex relative z-20 justify-center items-center w-full min-h-screen bg-orange-100 2xl:min-h-0 2xl:pb-80 2xl:pt-40"
     >
-      <div class="flex flex-col justify-center items-center px-10 lg:flex-row xl:px-20 2xl:max-w-7xl">
+      <div
+        class="flex flex-col justify-center items-center px-10 lg:flex-row xl:px-20 2xl:max-w-7xl"
+      >
         <div class="p-6 my-8 bg-gray-900 rounded-lg lg:w-1/2">
           <img
             v-if="!xlScreen"
@@ -191,7 +199,9 @@ export default {
             class="rounded-lg"
           />
         </div>
-        <div class="flex-grow text-left pb-16 md:pl-16 lg:w-1/2 xl:max-w-[50vw]">
+        <div
+          class="flex-grow text-left pb-16 md:pl-16 lg:w-1/2 xl:max-w-[50vw]"
+        >
           <div class="px-6">
             <h2
               class="inline-block text-5xl font-bold text-orange-400 drop-shadow-md sm:text-6xl md:text-7xl"
@@ -207,13 +217,15 @@ export default {
             <p class="md:max-w-[50vw] text-gray-900 leading-7 lg:text-lg mt-10">
               <span class="text-lg font-bold text-gray-900"
                 >SEGÚN ESTUDIOS OFICIALES</span
-              >, un <span class="text-xl font-bold text-red-500">83,7%</span> de la
-              población que elige la música como vocación termina tocando en la
-              calle o cambiando de profesión.
+              >, un <span class="text-xl font-bold text-red-500">83,7%</span> de
+              la población que elige la música como vocación termina tocando en
+              la calle o cambiando de profesión.
             </p>
             <p class="mt-1 leading-7 text-gray-900 lg:text-lg">
-              Esto provoca que muy pocos elijan este camino, lo que se traduce en un
-              <span class="text-orange-700">decremento de la cultura</span>.<br />
+              Esto provoca que muy pocos elijan este camino, lo que se traduce
+              en un
+              <span class="text-orange-700">decremento de la cultura</span
+              >.<br />
             </p>
             <p class="mt-4 leading-7 text-gray-900 lg:text-lg">
               Tu aportación, <span class="italic">por pequeña que sea</span>,
@@ -235,7 +247,9 @@ export default {
             <router-link to="/explore">
               <button
                 class="p-4 mt-4 w-full font-bold text-white bg-orange-800 rounded-full border-2 border-solid transition-transform duration-300 2xl:ml-4 2xl:w-auto hover:drop-shadow-lg hover:scale-105 transition-color hover:bg-orange-600"
-              >Salva la cultura</button>
+              >
+                Salva la cultura
+              </button>
             </router-link>
           </div>
         </div>

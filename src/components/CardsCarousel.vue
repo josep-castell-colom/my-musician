@@ -32,24 +32,62 @@ export default {
       this.position = position;
     },
     positionUp() {
-      if(this.position === 6) { return }
-      if(this.xlScreen && this.position >= 4) { return }
-      if(this.screenSize === 'md' && this.position >= 5) { return }
-      if(this.xlScreen) { this.position = 4; return }
-      if(this.screenSize === 'md' && this.position < 5) { this.position += 2; return }
-      if((this.screenSize === 'sm' || this.screenSize === 'xs') && this.position < 6) { this.position += 1; return }
+      if (this.position === 6) {
+        return;
+      }
+      if (this.xlScreen && this.position >= 4) {
+        return;
+      }
+      if (this.screenSize === 'md' && this.position >= 5) {
+        return;
+      }
+      if (this.xlScreen) {
+        this.position = 4;
+        return;
+      }
+      if (this.screenSize === 'md' && this.position < 5) {
+        this.position += 2;
+        return;
+      }
+      if (
+        (this.screenSize === 'sm' || this.screenSize === 'xs') &&
+        this.position < 6
+      ) {
+        this.position += 1;
+        return;
+      }
     },
     positionDown() {
       console.log(this.position);
-      if(this.position === 1) { return }
-      if(this.xlScreen) { this.position = 1; return }
-      if(this.screenSize === 'md') { this.position -= 2; return }
-      if(this.screenSize === 'sm' || this.screenSize === 'xs') { this.position -= 1; return }
+      if (this.position === 1) {
+        return;
+      }
+      if (this.xlScreen) {
+        this.position = 1;
+        return;
+      }
+      if (this.screenSize === 'md') {
+        this.position -= 2;
+        return;
+      }
+      if (this.screenSize === 'sm' || this.screenSize === 'xs') {
+        this.position -= 1;
+        return;
+      }
     },
-    checkTopPosition(){
-      if(this.xlScreen && this.position === 4) { this.topPosition = true; return }
-      if(this.screenSize === 'md' && this.position === 5) { this.topPosition = true; return }
-      if(this.position === 6) { this.topPosition = true; return }
+    checkTopPosition() {
+      if (this.xlScreen && this.position === 4) {
+        this.topPosition = true;
+        return;
+      }
+      if (this.screenSize === 'md' && this.position === 5) {
+        this.topPosition = true;
+        return;
+      }
+      if (this.position === 6) {
+        this.topPosition = true;
+        return;
+      }
       this.topPosition = false;
     },
     handlerDown() {
@@ -57,7 +95,6 @@ export default {
       this.checkTopPosition();
     },
     handlerUp() {
-      console.log(this.position);
       this.positionUp();
       this.checkTopPosition();
     },
@@ -67,12 +104,31 @@ export default {
     },
     adjustPosition() {
       this.checkTopPosition();
-      if((this.xlScreen || this.screenSize === 'lg') && this.position > 4) { this.position = 4; return }
-      if((this.xlScreen || this.screenSize === 'lg') && (this.position > 1 && this.position < 4)) { this.position = 1; return }
-      if(this.screenSize === 'md' && this.position === 2 ) { this.position = 1; return }
-      if(this.screenSize === 'md' && this.position === 4 ) { this.position = 3; return }
-      if(this.screenSize === 'md' && this.position === 6 ) { this.position = 5; return }
-    }
+      if ((this.xlScreen || this.screenSize === 'lg') && this.position > 4) {
+        this.position = 4;
+        return;
+      }
+      if (
+        (this.xlScreen || this.screenSize === 'lg') &&
+        this.position > 1 &&
+        this.position < 4
+      ) {
+        this.position = 1;
+        return;
+      }
+      if (this.screenSize === 'md' && this.position === 2) {
+        this.position = 1;
+        return;
+      }
+      if (this.screenSize === 'md' && this.position === 4) {
+        this.position = 3;
+        return;
+      }
+      if (this.screenSize === 'md' && this.position === 6) {
+        this.position = 5;
+        return;
+      }
+    },
   },
 };
 </script>
@@ -131,12 +187,41 @@ const filteredMusicians = store.musicians
       </div>
     </div>
     <div class="flex relative bottom-5 mx-auto mb-8 w-fit">
-      <div class="m-1 w-3 h-3 rounded-full border border-black border-solid hover:bg-orange-600/80 hover:scale-110" :class="{ active: position === 1}" @click="handlerSet(1)"></div>
-      <div v-if="screenSize === 'sm' || screenSize === 'xs'" class="m-1 w-3 h-3 rounded-full border border-black border-solid hover:bg-orange-600/80 hover:scale-110" :class="{ active: position === 2}" @click="handlerSet(2)"></div>
-      <div v-if="!xlScreen && screenSize != 'lg'" class="m-1 w-3 h-3 rounded-full border border-black border-solid hover:bg-orange-600/80 hover:scale-110" :class="{ active: position === 3}" @click="handlerSet(3)"></div>
-      <div v-if="screenSize != 'md'" class="m-1 w-3 h-3 rounded-full border border-black border-solid hover:bg-orange-600/80 hover:scale-110" :class="{ active: position === 4}" @click="handlerSet(4)"></div>
-      <div v-if="!xlScreen && screenSize != 'lg'" class="m-1 w-3 h-3 rounded-full border border-black border-solid hover:bg-orange-600/80 hover:scale-110" :class="{ active: position === 5}" @click="handlerSet(5)"></div>
-      <div v-if="screenSize === 'sm' || screenSize === 'xs'" class="m-1 w-3 h-3 rounded-full border border-black border-solid hover:bg-orange-600/80 hover:scale-110" :class="{ active: position === 6}" @click="handlerSet(6)"></div>
+      <div
+        class="m-1 w-3 h-3 rounded-full border border-black border-solid hover:bg-orange-600/80 hover:scale-110"
+        :class="{ active: position === 1 }"
+        @click="handlerSet(1)"
+      ></div>
+      <div
+        v-if="screenSize === 'sm' || screenSize === 'xs'"
+        class="m-1 w-3 h-3 rounded-full border border-black border-solid hover:bg-orange-600/80 hover:scale-110"
+        :class="{ active: position === 2 }"
+        @click="handlerSet(2)"
+      ></div>
+      <div
+        v-if="!xlScreen && screenSize != 'lg'"
+        class="m-1 w-3 h-3 rounded-full border border-black border-solid hover:bg-orange-600/80 hover:scale-110"
+        :class="{ active: position === 3 }"
+        @click="handlerSet(3)"
+      ></div>
+      <div
+        v-if="screenSize != 'md'"
+        class="m-1 w-3 h-3 rounded-full border border-black border-solid hover:bg-orange-600/80 hover:scale-110"
+        :class="{ active: position === 4 }"
+        @click="handlerSet(4)"
+      ></div>
+      <div
+        v-if="!xlScreen && screenSize != 'lg'"
+        class="m-1 w-3 h-3 rounded-full border border-black border-solid hover:bg-orange-600/80 hover:scale-110"
+        :class="{ active: position === 5 }"
+        @click="handlerSet(5)"
+      ></div>
+      <div
+        v-if="screenSize === 'sm' || screenSize === 'xs'"
+        class="m-1 w-3 h-3 rounded-full border border-black border-solid hover:bg-orange-600/80 hover:scale-110"
+        :class="{ active: position === 6 }"
+        @click="handlerSet(6)"
+      ></div>
     </div>
     <div
       v-if="!topPosition"
