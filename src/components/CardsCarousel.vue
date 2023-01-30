@@ -41,7 +41,7 @@ export default {
       if (this.screenSize === 'md' && this.position >= 5) {
         return;
       }
-      if (this.xlScreen) {
+      if (this.xlScreen || this.screenSize === 'lg') {
         this.position = 4;
         return;
       }
@@ -58,11 +58,10 @@ export default {
       }
     },
     positionDown() {
-      console.log(this.position);
       if (this.position === 1) {
         return;
       }
-      if (this.xlScreen) {
+      if (this.xlScreen || this.screenSize === 'lg') {
         this.position = 1;
         return;
       }
@@ -76,7 +75,7 @@ export default {
       }
     },
     checkTopPosition() {
-      if (this.xlScreen && this.position === 4) {
+      if ((this.xlScreen || this.screenSize === 'lg') && this.position === 4) {
         this.topPosition = true;
         return;
       }
