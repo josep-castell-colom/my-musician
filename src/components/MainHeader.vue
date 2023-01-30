@@ -162,12 +162,21 @@ export default {
     </div>
     <div
       class="flex relative flex-col justify-between items-center mr-4 w-7 h-6 transition-transform duration-300 scale-90 hover:scale-100 lg:hidden"
-      :class="{ burguerShown: burguerActive}"
+      :class="{ burguerShown: burguerActive }"
       @click="toggleBurguerActive"
     >
-      <span class="block w-full h-1 bg-white rounded-md transition-transform duration-300" id="burguer-span-1"></span>
-      <span class="block w-full h-1 bg-white rounded-md transition-transform duration-300" id="burguer-span-2"></span>
-      <span class="block w-full h-1 bg-white rounded-md transition-transform duration-300" id="burguer-span-3"></span>
+      <span
+        class="block w-full h-1 bg-white rounded-md transition-transform duration-300"
+        id="burguer-span-1"
+      ></span>
+      <span
+        class="block w-full h-1 bg-white rounded-md transition-transform duration-300"
+        id="burguer-span-2"
+      ></span>
+      <span
+        class="block w-full h-1 bg-white rounded-md transition-transform duration-300"
+        id="burguer-span-3"
+      ></span>
     </div>
   </header>
 </template>
@@ -212,13 +221,13 @@ export default {
   margin: 0;
 }
 .burguerShown #burguer-span-1 {
-  transform: rotate(45deg) translate(10px, 10px);
+  transform: rotate(45deg) translate(5px, 10px);
 }
 .burguerShown #burguer-span-2 {
   transform: scale(0);
 }
 .burguerShown #burguer-span-3 {
-  transform: rotate(-45deg) translate(10px, -10px);
+  transform: rotate(-45deg) translate(5px, -10px);
 }
 .burguerOn.burguerHidden {
   display: none;
