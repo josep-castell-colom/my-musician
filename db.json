@@ -19,7 +19,9 @@
       "rol": "De sesión",
       "description": "Tengo que hacer páginas web para labrarme un futuro prometedor.",
       "imgName": "giussep",
-      "patrons": []
+      "patrons": [],
+      "email": "josep@hola.com",
+      "password": "hola"
     },
     {
       "id": 2,

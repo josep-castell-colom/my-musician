@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Header from './components/MainHeader.vue';
+import Header from "./components/MainHeader.vue";
 </script>
 
 <template>
@@ -10,6 +10,8 @@ import Header from './components/MainHeader.vue';
       alt="Primer plano de un músico tocando una guitarra acústica."
       class="fixed top-0 mx-auto w-full h-screen"
     />
-    <RouterView />
+    <Suspense>
+      <RouterView />
+    </Suspense>
   </div>
 </template>

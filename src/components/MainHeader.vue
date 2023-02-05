@@ -7,17 +7,17 @@ export default {
     };
   },
   created() {
-    window.addEventListener('resize', this.checkWidth);
+    window.addEventListener("resize", this.checkWidth);
   },
   mounted() {
     this.checkWidth();
   },
   unmounted() {
-    window.removeEventListener('resize', this.checkWidth);
+    window.removeEventListener("resize", this.checkWidth);
   },
   methods: {
     userAuth(): boolean {
-      return localStorage.getItem('user') ? true : false;
+      return localStorage.getItem("user") ? true : false;
     },
     checkWidth() {
       this.burguer = window.innerWidth <= 1024;
@@ -93,7 +93,7 @@ export default {
     >
       <nav class="flex items-center">
         <router-link
-          to="/explore"
+          :to="{ name: 'musicians.index' }"
           @click="toggleBurguerActive"
           class="inline-block mx-4 transition-transform duration-300 hover:underline hover:scale-110"
           >Explora</router-link
