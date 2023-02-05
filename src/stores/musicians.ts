@@ -1,10 +1,10 @@
-import { defineStore } from "pinia";
-import { ref } from "vue";
+import { defineStore } from 'pinia';
+import { ref } from 'vue';
 
-import type Musician from "../types/Musician";
+import type Musician from '../types/Musician';
 
-export const useMusiciansStore = defineStore("musicians", () => {
-  const api = "http://localhost:3000/";
+export const useMusiciansStore = defineStore('musicians', () => {
+  const api = 'http://localhost:3000/';
   const musicians = ref();
   const musician = ref();
   const loading = ref(false);
@@ -15,9 +15,7 @@ export const useMusiciansStore = defineStore("musicians", () => {
     loading.value = true;
 
     try {
-      musicians.value = await fetch(`${api}musicians`).then((res) =>
-        res.json()
-      );
+      musicians.value = await fetch(`${api}musicians`).then(res => res.json());
     } catch (err) {
       error.value = err;
     } finally {
@@ -29,7 +27,7 @@ export const useMusiciansStore = defineStore("musicians", () => {
     loading.value = true;
 
     try {
-      musician.value = await fetch(`${api}musicians/${id}`).then((res) =>
+      musician.value = await fetch(`${api}musicians/${id}`).then(res =>
         res.json()
       );
     } catch (err) {
@@ -41,9 +39,9 @@ export const useMusiciansStore = defineStore("musicians", () => {
 
   async function getMusicians() {
     await fetch(api)
-      .then((res) => res.json())
+      .then(res => res.json())
       .then(({ data }) => console.log(data))
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
   }
 
   function getMusiciansWithNoPatrons() {

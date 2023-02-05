@@ -183,7 +183,12 @@ const filteredMusicians = store.musicians
           <template #name>{{ musician.name }} {{ musician.lastname }}</template>
           <template #description>{{ musician.description }}</template>
           <template #instrument>{{ musician.instrument }}</template>
-          <template #rol>{{ musician.rol }}</template>
+          <template #rol>
+            <span v-for="(rol, index) in musician.rol">
+              <span v-if="index != musician.rol.length - 1">{{ rol }}, </span>
+              <span v-else>{{ rol }}</span>
+            </span>
+          </template>
           <template #age>{{ musician.age }}</template>
           <template #patrons>{{ musician.patrons.length }}</template>
         </card-vue>
