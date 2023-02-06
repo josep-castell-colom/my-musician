@@ -141,7 +141,7 @@ const store = useMusiciansStore();
 
 await fetchMusicians();
 
-const error = null; // borrar
+const error = store.error;
 
 const filteredMusicians = store.musicians
   .filter((musician: Musician) => musician.patrons.length === 0)
@@ -149,7 +149,10 @@ const filteredMusicians = store.musicians
 </script>
 
 <template>
-  <div v-if="!error" class="relative w-full">
+  <div v-if="error">
+    <p class="text-red-700">Error al cargar los datos</p>
+  </div>
+  <div v-else class="relative w-full">
     <div
       v-if="position != 1"
       @click="handlerDown"
@@ -184,7 +187,7 @@ const filteredMusicians = store.musicians
           <template #description>{{ musician.description }}</template>
           <template #instrument>{{ musician.instrument }}</template>
           <template #rol>
-            <span v-for="(rol, index) in musician.rol">
+            <span v-for="(rol, index) in musician.rol" :key="index">
               <span v-if="index != musician.rol.length - 1">{{ rol }}, </span>
               <span v-else>{{ rol }}</span>
             </span>
@@ -236,9 +239,6 @@ const filteredMusicians = store.musicians
       @click="handlerUp"
       class="absolute right-9 bottom-11 z-30 w-10 h-10 border border-b-0 border-l-0 border-black border-solid rotate-45 sm:-right-10 sm:top-1/2 sm:-translate-y-1/2 hover:border-2 hover:border-b-0 hover:border-l-0"
     ></div>
-  </div>
-  <div v-if="error">
-    <p class="text-red-700">Error al cargar los datos</p>
   </div>
 </template>
 
