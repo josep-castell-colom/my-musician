@@ -1,31 +1,55 @@
 <script setup lang="ts">
-import Footer from '@/components/MainFooter.vue';
-import StickyNavbar from '@/components/StickyNavbar.vue';
-import { useMusiciansStore } from '@/stores/musicians';
-import type Musician from '@/types/Musician';
+import Footer from "@/components/MainFooter.vue";
+import StickyNavbar from "@/components/StickyNavbar.vue";
+import { useMusiciansStore } from "@/stores/musicians";
+import type Musician from "@/types/Musician";
+import { ref } from "vue";
 const { fetchMusicians } = useMusiciansStore();
 
 const store = useMusiciansStore();
 const searchFilter = {
-  instrument: 'Giussep',
+  instrument: "Giussep",
   age: 0,
-  rol: '',
+  rol: "",
 };
 
 await fetchMusicians();
 
 let musicians: Array<Musician> = store.musicians;
+const instruments = [...new Set(musicians.map((m) => m.instrument))];
+const rolsArrays: Array<string> = [];
+
+musicians.forEach((m) => {
+  m.rol.forEach((rol) => {
+    if (rol != "") {
+      rolsArrays.push(rol);
+    }
+  });
+});
+
+const rols = [...new Set(rolsArrays)];
+const filteredMusicians = ref(musicians);
 
 const error = store.error;
 
 function filterMusicians(filter: Event) {
-  searchFilter.instrument = filter.instrument;
-  musicians.filter(m => m.name == searchFilter.instrument);
-  console.log(searchFilter.instrument);
-}
-
-function showInfo() {
-  console.log(searchFilter);
+  let tempMusicians = musicians;
+  let namefilter = filter.name;
+  let instrumentFilter = filter.instrument;
+  if (namefilter != "") {
+    tempMusicians = tempMusicians.filter((musician) => {
+      return musician.name.toLowerCase().includes(namefilter.toLowerCase());
+    });
+  }
+  if (instrumentFilter != "all") {
+    tempMusicians = tempMusicians.filter((musician) => {
+      return musician.instrument
+        .toLowerCase()
+        .includes(instrumentFilter.toLowerCase());
+    });
+  }
+  filteredMusicians.value = tempMusicians;
+  return tempMusicians;
 }
 </script>
 
@@ -41,12 +65,15 @@ function showInfo() {
         {{ store.musicians.length }} músicos confían en nosotros
       </h3>
     </div>
-    <div class="h-full bg-orange-100">
-      <StickyNavbar @update:filter="filterMusicians" />
-      <button @click="showInfo">Filter</button>
-      <div class="flex flex-wrap justify-center items-center p-12">
+    <div class="h-full bg-white">
+      <StickyNavbar
+        @update:filter="filterMusicians"
+        :instruments="instruments"
+        :rols="rols"
+      />
+      <div class="flex flex-wrap justify-center items-center p-16">
         <card-vue
-          v-for="(musician, index) in musicians"
+          v-for="(musician, index) in filteredMusicians"
           :key="index"
           :id="musician['id']"
           class="mb-12"
