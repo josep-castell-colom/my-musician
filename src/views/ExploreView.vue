@@ -1,40 +1,32 @@
 <script setup lang="ts">
-import Footer from "@/components/MainFooter.vue";
-import StickyNavbar from "@/components/StickyNavbar.vue";
-import { useMusiciansStore } from "@/stores/musicians";
-import type Musician from "@/types/Musician";
+import Footer from '@/components/MainFooter.vue';
+import StickyNavbar from '@/components/StickyNavbar.vue';
+import { useMusiciansStore } from '@/stores/musicians';
+import type Musician from '@/types/Musician';
 const { fetchMusicians } = useMusiciansStore();
 
 const store = useMusiciansStore();
+const searchFilter = {
+  instrument: 'Giussep',
+  age: 0,
+  rol: '',
+};
 
 await fetchMusicians();
 
-const musicians: Array<Musician> = store.musicians;
+let musicians: Array<Musician> = store.musicians;
 
 const error = store.error;
-</script>
 
-<script lang="ts">
-export default {
-  data() {
-    return {
-      filter: {
-        instrument: "",
-        age: 0,
-        rol: "",
-      },
-    };
-  },
-  components: {
-    StickyNavbar,
-  },
-  methods: {
-    logChange(filter: object) {
-      this.filter.instrument = filter.instrument;
-      console.log(this.filter.instrument);
-    },
-  },
-};
+function filterMusicians(filter: Event) {
+  searchFilter.instrument = filter.instrument;
+  musicians.filter(m => m.name == searchFilter.instrument);
+  console.log(searchFilter.instrument);
+}
+
+function showInfo() {
+  console.log(searchFilter);
+}
 </script>
 
 <template>
@@ -46,11 +38,12 @@ export default {
       class="h-[40vh] w-full bg-orange-100 flex flex-col items-center justify-center"
     >
       <h3 class="mx-auto text-4xl font-bold text-gray-800">
-        {{ musicians.length }} músicos confían en nosotros
+        {{ store.musicians.length }} músicos confían en nosotros
       </h3>
     </div>
     <div class="h-full bg-orange-100">
-      <StickyNavbar @update:filter="logChange" />
+      <StickyNavbar @update:filter="filterMusicians" />
+      <button @click="showInfo">Filter</button>
       <div class="flex flex-wrap justify-center items-center p-12">
         <card-vue
           v-for="(musician, index) in musicians"
@@ -60,9 +53,7 @@ export default {
         >
           <template #img
             ><img
-              :src="
-                'src/assets/images/musicians/' + musician['imgName'] + '-sm.jpg'
-              "
+              :src="`src/assets/images/musicians/${musician['imgName']}-sm.jpg`"
           /></template>
           <template #name>{{ musician.name }} {{ musician.lastname }}</template>
           <template #description>{{ musician.description }}</template>
