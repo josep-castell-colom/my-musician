@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import Footer from "@/components/MainFooter.vue";
-import StickyNavbar from "@/components/StickyNavbar.vue";
-import { useMusiciansStore } from "@/stores/musicians";
-import type Musician from "@/types/Musician";
-import { ref } from "vue";
+import Footer from '@/components/MainFooter.vue';
+import StickyNavbar from '@/components/StickyNavbar.vue';
+import { useMusiciansStore } from '@/stores/musicians';
+import type Musician from '@/types/Musician';
+import { ref } from 'vue';
 const { fetchMusicians } = useMusiciansStore();
 
 const store = useMusiciansStore();
 const searchFilter = {
-  instrument: "Giussep",
+  instrument: 'Giussep',
   age: 0,
-  rol: "",
+  rol: '',
 };
 
 await fetchMusicians();
 
 let musicians: Array<Musician> = store.musicians;
-const instruments = [...new Set(musicians.map((m) => m.instrument))];
+const instruments = [...new Set(musicians.map(m => m.instrument))];
 const rolsArrays: Array<string> = [];
 
-musicians.forEach((m) => {
-  m.rol.forEach((rol) => {
-    if (rol != "") {
+musicians.forEach(m => {
+  m.rol.forEach(rol => {
+    if (rol != '') {
       rolsArrays.push(rol);
     }
   });
@@ -32,22 +32,35 @@ const filteredMusicians = ref(musicians);
 
 const error = store.error;
 
-function filterMusicians(filter: Event) {
+function filterMusicians(filter: any) {
   let tempMusicians = musicians;
-  let namefilter = filter.name;
+  let nameFilter = filter.name;
   let instrumentFilter = filter.instrument;
-  if (namefilter != "") {
-    tempMusicians = tempMusicians.filter((musician) => {
-      return musician.name.toLowerCase().includes(namefilter.toLowerCase());
+  let rolFilter = filter.rol;
+  let ageFilter = filter.age;
+  if (nameFilter != '') {
+    tempMusicians = tempMusicians.filter(musician => {
+      return (
+        musician.name.toLowerCase().includes(nameFilter.toLowerCase()) ||
+        musician.lastname.toLowerCase().includes(nameFilter.toLowerCase())
+      );
     });
   }
-  if (instrumentFilter != "all") {
-    tempMusicians = tempMusicians.filter((musician) => {
+  if (instrumentFilter != 'all') {
+    tempMusicians = tempMusicians.filter(musician => {
       return musician.instrument
         .toLowerCase()
         .includes(instrumentFilter.toLowerCase());
     });
   }
+  if (rolFilter != 'all') {
+    tempMusicians = tempMusicians.filter(musician => {
+      return musician.rol.includes(rolFilter);
+    });
+  }
+  tempMusicians = tempMusicians.filter(musician => {
+    return musician.age > ageFilter[0] && musician.age < ageFilter[1];
+  });
   filteredMusicians.value = tempMusicians;
   return tempMusicians;
 }

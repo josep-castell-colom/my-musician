@@ -1,5 +1,9 @@
 <script lang="ts">
+import Slider from '@vueform/slider';
 export default {
+  components: {
+    Slider,
+  },
   props: {
     instruments: {
       type: Array<string>,
@@ -13,18 +17,17 @@ export default {
   data() {
     return {
       filter: {
-        name: "",
-        instrument: "all",
-        ageMin: 0,
-        ageMax: 100,
-        rol: "",
+        name: '',
+        instrument: 'all',
+        age: [18, 100],
+        rol: 'all',
       },
     };
   },
   methods: {
     updateFilter() {
-      console.log(this.filter);
-      this.$emit("update:filter", this.filter);
+      console.log(this.filter.age);
+      this.$emit('update:filter', this.filter);
     },
   },
 };
@@ -63,9 +66,12 @@ export default {
           </option>
         </select>
       </fieldset>
-      <fieldset>
+      <fieldset class="flex items-center">
         <label for="age">Edad:</label>
-        <input
+        <div class="w-44 mx-3">
+          <Slider @input="updateFilter" v-model="filter.age" />
+        </div>
+        <!-- <input
           @input="updateFilter"
           v-model="filter.ageMin"
           type="number"
@@ -78,20 +84,19 @@ export default {
           type="number"
           name="age"
           class="w-12 filter-input"
-        />
+        /> -->
       </fieldset>
       <fieldset>
         <label for="rol">Rol:</label>
-        <!-- <input
-          @input="updateFilter"
+        <select
+          @change="updateFilter"
           v-model="filter.rol"
-          type="text"
           name="rol"
+          id="rol"
           class="filter-input"
-        /> -->
-        <select name="rol" id="rol" class="filter-input">
+        >
           <option value="all" selected>Todos</option>
-          <option v-for="(rol, index) of rols" :key="index" value="`${rol}`">
+          <option v-for="(rol, index) of rols" :key="index" :value="`${rol}`">
             {{ rol }}
           </option>
         </select>
@@ -111,3 +116,4 @@ select {
   padding: 0.2rem;
 }
 </style>
+<style src="@vueform/slider/themes/default.css"></style>

@@ -9,7 +9,7 @@ module.exports = {
     extend: {},
     fontFamily: {
       'abril-fatface': ['"Abril Fatface"', 'ui-sans-serif', 'system-ui'],
-    }
+    },
   },
   plugins: [],
 };
