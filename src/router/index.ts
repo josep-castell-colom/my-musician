@@ -12,17 +12,12 @@ const router = createRouter({
     {
       path: "/explore",
       name: "musicians.index",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import("../views/ExploreView.vue"),
+      props: (route) => ({ query: [route.query.instrument, route.query.rol] }),
     },
     {
       path: "/musicians/:id",
       name: "musicians.show",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import("../views/MusicianView.vue"),
       props: true,
     },

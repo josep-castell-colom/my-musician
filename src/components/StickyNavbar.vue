@@ -1,10 +1,19 @@
 <script lang="ts">
-import Slider from '@vueform/slider';
+import Slider from "@vueform/slider";
+
 export default {
   components: {
     Slider,
   },
   props: {
+    instrument: {
+      type: String,
+      required: true,
+    },
+    rol: {
+      type: String,
+      required: true,
+    },
     instruments: {
       type: Array<string>,
       required: true,
@@ -17,18 +26,20 @@ export default {
   data() {
     return {
       filter: {
-        name: '',
-        instrument: 'all',
+        name: "",
+        instrument: this.instrument,
         age: [18, 100],
-        rol: 'all',
+        rol: "all",
       },
     };
   },
   methods: {
     updateFilter() {
-      console.log(this.filter.age);
-      this.$emit('update:filter', this.filter);
+      this.$emit("update:filter", this.filter);
     },
+  },
+  mounted() {
+    console.log(this.filter);
   },
 };
 </script>
@@ -56,7 +67,7 @@ export default {
           id="instrument"
           class="filter-input"
         >
-          <option value="all" selected>Todos</option>
+          <option value="all">Todos</option>
           <option
             v-for="(instrument, index) of instruments"
             :key="index"
@@ -68,23 +79,13 @@ export default {
       </fieldset>
       <fieldset class="flex items-center">
         <label for="age">Edad:</label>
-        <div class="w-44 mx-3">
-          <Slider @input="updateFilter" v-model="filter.age" />
+        <div class="mx-3 w-44">
+          <Slider
+            @update="updateFilter"
+            v-model="filter.age"
+            class="slider-orange"
+          />
         </div>
-        <!-- <input
-          @input="updateFilter"
-          v-model="filter.ageMin"
-          type="number"
-          name="age"
-          class="w-12 filter-input"
-        />
-        <input
-          @input="updateFilter"
-          v-model="filter.ageMax"
-          type="number"
-          name="age"
-          class="w-12 filter-input"
-        /> -->
       </fieldset>
       <fieldset>
         <label for="rol">Rol:</label>
@@ -95,7 +96,7 @@ export default {
           id="rol"
           class="filter-input"
         >
-          <option value="all" selected>Todos</option>
+          <option value="all">Todos</option>
           <option v-for="(rol, index) of rols" :key="index" :value="`${rol}`">
             {{ rol }}
           </option>
@@ -114,6 +115,30 @@ export default {
 }
 select {
   padding: 0.2rem;
+}
+.slider-orange {
+  --slider-connect-bg: rgb(154 52 18);
+  --slider-height: 6px;
+  --slider-handle-bg: #fff;
+  --slider-handle-border: 0;
+  --slider-handle-width: 25px;
+  --slider-handle-height: 25px;
+  --slider-handle-radius: 5px;
+  --slider-handle-shadow: 0.5px 0.5px 2px 1px rgba(0, 0, 0, 0.32);
+  --slider-handle-shadow-active: 0.5px 0.5px 2px 1px rgba(0, 0, 0, 0.42);
+  --slider-handle-ring-width: 3px;
+  --slider-handle-ring-color: #10b98130;
+  --slider-tooltip-font-size: 0.7rem;
+  --slider-tooltip-line-height: 0.8rem;
+  --slider-tooltip-font-weight: 600;
+  --slider-tooltip-min-width: 20px;
+  --slider-tooltip-bg: none;
+  --slider-tooltip-color: #333;
+  --slider-tooltip-radius: 9999px;
+  --slider-tooltip-py: 1px;
+  --slider-tooltip-px: 2px;
+  --slider-tooltip-arrow-size: 0px;
+  --slider-tooltip-distance: -21px;
 }
 </style>
 <style src="@vueform/slider/themes/default.css"></style>

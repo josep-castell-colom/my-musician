@@ -145,14 +145,14 @@ export default {
       <div id="nav-separator" class="w-px h-1/2 bg-white"></div>
       <div id="nav-user" class="flex items-center mx-4">
         <router-link
-          to="/login"
+          :to="{ name: 'login' }"
           @click="toggleBurguerActive"
           v-if="!userAuth()"
           class="inline-block text-xs transition-transform duration-300 hover:underline hover:scale-110"
           >Log in</router-link
         >
         <router-link
-          to="/register"
+          :to="{ name: 'register' }"
           @click="toggleBurguerActive"
           v-if="!userAuth()"
           class="inline-block ml-2 text-xs transition-transform duration-300 hover:underline hover:scale-110"

@@ -1,36 +1,40 @@
 <script setup lang="ts">
-import Footer from '@/components/MainFooter.vue';
-import StickyNavbar from '@/components/StickyNavbar.vue';
-import { useMusiciansStore } from '@/stores/musicians';
-import type Musician from '@/types/Musician';
-import { ref } from 'vue';
+import Footer from "@/components/MainFooter.vue";
+import StickyNavbar from "@/components/StickyNavbar.vue";
+import { useMusiciansStore } from "@/stores/musicians";
+import type Musician from "@/types/Musician";
+import { onMounted, ref, watch } from "vue";
+import { useRoute } from "vue-router";
 const { fetchMusicians } = useMusiciansStore();
-
+const route = useRoute();
 const store = useMusiciansStore();
-const searchFilter = {
-  instrument: 'Giussep',
-  age: 0,
-  rol: '',
-};
 
-await fetchMusicians();
+// const props = defineProps({
+//   instrument: {
+//     type: String,
+//     required: false,
+//   },
+//   age: {
+//     type: Array<number>,
+//     required: false,
+//   },
+// });
 
-let musicians: Array<Musician> = store.musicians;
-const instruments = [...new Set(musicians.map(m => m.instrument))];
-const rolsArrays: Array<string> = [];
-
-musicians.forEach(m => {
-  m.rol.forEach(rol => {
-    if (rol != '') {
-      rolsArrays.push(rol);
-    }
-  });
+const searchFilter = ref({
+  name: "",
+  instrument: route.query.instrument || "all",
+  age: [18, 100],
+  rol: route.query.rol || "all",
 });
 
-const rols = [...new Set(rolsArrays)];
-const filteredMusicians = ref(musicians);
-
-const error = store.error;
+function updateFilter() {
+  searchFilter.value = {
+    name: "",
+    instrument: route.query.instrument || "all",
+    age: [18, 100],
+    rol: route.query.rol || "all",
+  };
+}
 
 function filterMusicians(filter: any) {
   let tempMusicians = musicians;
@@ -38,32 +42,63 @@ function filterMusicians(filter: any) {
   let instrumentFilter = filter.instrument;
   let rolFilter = filter.rol;
   let ageFilter = filter.age;
-  if (nameFilter != '') {
-    tempMusicians = tempMusicians.filter(musician => {
+  if (nameFilter != "") {
+    tempMusicians = tempMusicians.filter((musician) => {
       return (
         musician.name.toLowerCase().includes(nameFilter.toLowerCase()) ||
         musician.lastname.toLowerCase().includes(nameFilter.toLowerCase())
       );
     });
   }
-  if (instrumentFilter != 'all') {
-    tempMusicians = tempMusicians.filter(musician => {
+  if (instrumentFilter != "all") {
+    tempMusicians = tempMusicians.filter((musician) => {
       return musician.instrument
         .toLowerCase()
         .includes(instrumentFilter.toLowerCase());
     });
   }
-  if (rolFilter != 'all') {
-    tempMusicians = tempMusicians.filter(musician => {
+  if (rolFilter != "all") {
+    tempMusicians = tempMusicians.filter((musician) => {
       return musician.rol.includes(rolFilter);
     });
   }
-  tempMusicians = tempMusicians.filter(musician => {
+  tempMusicians = tempMusicians.filter((musician) => {
     return musician.age > ageFilter[0] && musician.age < ageFilter[1];
   });
   filteredMusicians.value = tempMusicians;
   return tempMusicians;
 }
+
+await fetchMusicians();
+
+let musicians: Array<Musician> = store.musicians;
+const instruments = [...new Set(musicians.map((m) => m.instrument))];
+const rolsArrays: Array<string> = [];
+
+musicians.forEach((m) => {
+  m.rol.forEach((rol) => {
+    if (rol != "") {
+      rolsArrays.push(rol);
+    }
+  });
+});
+
+const rols = [...new Set(rolsArrays)];
+const filteredMusicians = ref(musicians);
+const error = store.error;
+
+onMounted(() => {
+  updateFilter();
+  filteredMusicians.value = filterMusicians(searchFilter.value);
+});
+
+watch(
+  () => route.query,
+  () => {
+    updateFilter();
+    filteredMusicians.value = filterMusicians(searchFilter.value);
+  }
+);
 </script>
 
 <template>
@@ -81,6 +116,8 @@ function filterMusicians(filter: any) {
     <div class="h-full bg-white">
       <StickyNavbar
         @update:filter="filterMusicians"
+        :instrument="searchFilter.instrument"
+        :rol="searchFilter.rol"
         :instruments="instruments"
         :rols="rols"
       />

@@ -107,7 +107,7 @@
       "age": 22,
       "instrument": "Guitarra española",
       "rol": ["De sesión", "Solista"],
-      "description": "Mi vida es el flamenco. Vivo por la música i para la música.",
+      "description": "Mi vida es el flamenco. Vivo por la música y para la música.",
       "imgName": "paco",
       "patrons": []
     },
@@ -118,7 +118,7 @@
       "age": 35,
       "instrument": "Batería",
       "rol": ["De sesión", "Acompañante"],
-      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "description": "Me gusta el fútbol y tocar la batería. A veces paso las tardes en el estudio de mi amigo y me deja tocar su batería.",
       "imgName": "leo",
       "patrons": []
     },
@@ -129,7 +129,7 @@
       "age": 26,
       "instrument": "DJ",
       "rol": [""],
-      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "description": "Mi principal mercado es la BBC (bodas, bautizos y comuniones) pero también pincho en todo tipo de eventos privados.",
       "imgName": "davide",
       "patrons": []
     },
@@ -140,7 +140,7 @@
       "age": 28,
       "instrument": "Percusión",
       "rol": ["De sesión", "Acompañante", "Solista"],
-      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "description": "La percusión da el ritmo a la vida. Los latidos de mi corazón son la pulsación de mi existencia.",
       "imgName": "emmanuel",
       "patrons": []
     },
@@ -162,7 +162,7 @@
       "age": 27,
       "instrument": "Batería",
       "rol": ["De sesión", "Acompañante"],
-      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "description": "Tengo una batería en el garaje de mi casa, al lado del tractor. Me encanta Green Day.",
       "imgName": "isaiah",
       "patrons": []
     },
@@ -173,7 +173,7 @@
       "age": 78,
       "instrument": "Acordeón",
       "rol": ["De sesión", "Acompañante"],
-      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "description": "Llevo 50 años tocando el acordeón pero todavía no he cotizado los 365 días para pedir el paro.",
       "imgName": "james",
       "patrons": [1]
     },
@@ -184,7 +184,7 @@
       "age": 23,
       "instrument": "Voz",
       "rol": ["Solista"],
-      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "description": "Brrr! Grr!",
       "imgName": "kaique",
       "patrons": []
     },
@@ -195,7 +195,7 @@
       "age": 31,
       "instrument": "Batería",
       "rol": ["De sesión", "Acompañante"],
-      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "description": "Ik speelde een keer een concert en er was veel rook.",
       "imgName": "mantas",
       "patrons": []
     },
@@ -239,7 +239,7 @@
       "age": 28,
       "instrument": "Ukelele",
       "rol": ["Acompañante"],
-      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "description": "Somewhere over the rainbow way up high there's a land that I heard of once in a lullaby.",
       "imgName": "thibault",
       "patrons": []
     },
@@ -250,7 +250,7 @@
       "age": 24,
       "instrument": "Voz",
       "rol": ["Líder"],
-      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "description": "Me gusta el rap y la poesía, si me dieran de comer lo haría cada día.",
       "imgName": "ahmed",
       "patrons": []
     },
@@ -261,7 +261,7 @@
       "age": 23,
       "instrument": "Bajo eléctrico",
       "rol": ["Acompañante"],
-      "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
+      "description": "Ya sé hacer quintas y octavas, mi estilo es el punk.",
       "imgName": "kurt",
       "patrons": []
     },

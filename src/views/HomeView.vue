@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import CardsCarousel from '@/components/CardsCarousel.vue';
-import Footer from '@/components/MainFooter.vue';
+import CardsCarousel from "@/components/CardsCarousel.vue";
+import Footer from "@/components/MainFooter.vue";
 </script>
 <script lang="ts">
 export default {
   data() {
     return {
       xlScreen: false,
-      screenSize: '',
+      screenSize: "",
     };
   },
   created() {
-    window.addEventListener('resize', this.checkWidth);
+    window.addEventListener("resize", this.checkWidth);
   },
   mounted() {
     this.checkWidth();
   },
   unmounted() {
-    window.removeEventListener('resize', this.checkWidth);
+    window.removeEventListener("resize", this.checkWidth);
   },
   methods: {
     checkWidth() {
@@ -27,21 +27,21 @@ export default {
     getScreenSize() {
       const width = window.innerWidth;
       if (width <= 640) {
-        return 'xs';
+        return "xs";
       }
       if (width <= 768) {
-        return 'sm';
+        return "sm";
       }
       if (width <= 1024) {
-        return 'md';
+        return "md";
       }
       if (width <= 1280) {
-        return 'lg';
+        return "lg";
       }
       if (width <= 1536) {
-        return 'xl';
+        return "xl";
       }
-      return '2xl';
+      return "2xl";
     },
   },
 };
@@ -102,7 +102,7 @@ export default {
           <CardsCarousel :xl-screen="xlScreen" :screen-size="screenSize" />
         </Suspense>
       </div>
-      <router-link to="/explore">
+      <router-link :to="{ name: 'musicians.index' }">
         <button
           class="p-4 font-bold text-white bg-orange-800 rounded-full transition-transform duration-300 hover:drop-shadow-lg hover:scale-105 hover:bg-orange-600"
         >
