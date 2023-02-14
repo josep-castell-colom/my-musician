@@ -9,7 +9,7 @@ export default {
     screenSize: {
       type: String,
       required: true,
-      default: "3xl",
+      default: '3xl',
     },
   },
   data() {
@@ -19,13 +19,13 @@ export default {
     };
   },
   created() {
-    window.addEventListener("resize", this.adjustPosition);
+    window.addEventListener('resize', this.adjustPosition);
   },
   mounted() {
     this.adjustPosition();
   },
   unmounted() {
-    window.removeEventListener("resize", this.adjustPosition);
+    window.removeEventListener('resize', this.adjustPosition);
   },
   methods: {
     setPosition(position: number) {
@@ -38,19 +38,19 @@ export default {
       if (this.xlScreen && this.position >= 4) {
         return;
       }
-      if (this.screenSize === "md" && this.position >= 5) {
+      if (this.screenSize === 'md' && this.position >= 5) {
         return;
       }
-      if (this.xlScreen || this.screenSize === "lg") {
+      if (this.xlScreen || this.screenSize === 'lg') {
         this.position = 4;
         return;
       }
-      if (this.screenSize === "md" && this.position < 5) {
+      if (this.screenSize === 'md' && this.position < 5) {
         this.position += 2;
         return;
       }
       if (
-        (this.screenSize === "sm" || this.screenSize === "xs") &&
+        (this.screenSize === 'sm' || this.screenSize === 'xs') &&
         this.position < 6
       ) {
         this.position += 1;
@@ -61,25 +61,25 @@ export default {
       if (this.position === 1) {
         return;
       }
-      if (this.xlScreen || this.screenSize === "lg") {
+      if (this.xlScreen || this.screenSize === 'lg') {
         this.position = 1;
         return;
       }
-      if (this.screenSize === "md") {
+      if (this.screenSize === 'md') {
         this.position -= 2;
         return;
       }
-      if (this.screenSize === "sm" || this.screenSize === "xs") {
+      if (this.screenSize === 'sm' || this.screenSize === 'xs') {
         this.position -= 1;
         return;
       }
     },
     checkTopPosition() {
-      if ((this.xlScreen || this.screenSize === "lg") && this.position === 4) {
+      if ((this.xlScreen || this.screenSize === 'lg') && this.position === 4) {
         this.topPosition = true;
         return;
       }
-      if (this.screenSize === "md" && this.position === 5) {
+      if (this.screenSize === 'md' && this.position === 5) {
         this.topPosition = true;
         return;
       }
@@ -103,27 +103,27 @@ export default {
     },
     adjustPosition() {
       this.checkTopPosition();
-      if ((this.xlScreen || this.screenSize === "lg") && this.position > 4) {
+      if ((this.xlScreen || this.screenSize === 'lg') && this.position > 4) {
         this.position = 4;
         return;
       }
       if (
-        (this.xlScreen || this.screenSize === "lg") &&
+        (this.xlScreen || this.screenSize === 'lg') &&
         this.position > 1 &&
         this.position < 4
       ) {
         this.position = 1;
         return;
       }
-      if (this.screenSize === "md" && this.position === 2) {
+      if (this.screenSize === 'md' && this.position === 2) {
         this.position = 1;
         return;
       }
-      if (this.screenSize === "md" && this.position === 4) {
+      if (this.screenSize === 'md' && this.position === 4) {
         this.position = 3;
         return;
       }
-      if (this.screenSize === "md" && this.position === 6) {
+      if (this.screenSize === 'md' && this.position === 6) {
         this.position = 5;
         return;
       }
@@ -133,8 +133,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { useMusiciansStore } from "@/stores/musicians";
-import type Musician from "@/types/Musician";
+import { useMusiciansStore } from '@/stores/musicians';
+import type Musician from '@/types/Musician';
 const { fetchMusicians } = useMusiciansStore();
 
 const store = useMusiciansStore();

@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import CardsCarousel from "@/components/CardsCarousel.vue";
-import Footer from "@/components/MainFooter.vue";
+import CardsCarousel from '@/components/CardsCarousel.vue';
+import Footer from '@/components/MainFooter.vue';
 </script>
 <script lang="ts">
 export default {
   data() {
     return {
       xlScreen: false,
-      screenSize: "",
+      screenSize: '',
     };
   },
   created() {
-    window.addEventListener("resize", this.checkWidth);
+    window.addEventListener('resize', this.checkWidth);
   },
   mounted() {
     this.checkWidth();
   },
   unmounted() {
-    window.removeEventListener("resize", this.checkWidth);
+    window.removeEventListener('resize', this.checkWidth);
   },
   methods: {
     checkWidth() {
@@ -27,27 +27,32 @@ export default {
     getScreenSize() {
       const width = window.innerWidth;
       if (width <= 640) {
-        return "xs";
+        return 'xs';
       }
       if (width <= 768) {
-        return "sm";
+        return 'sm';
       }
       if (width <= 1024) {
-        return "md";
+        return 'md';
       }
       if (width <= 1280) {
-        return "lg";
+        return 'lg';
       }
       if (width <= 1536) {
-        return "xl";
+        return 'xl';
       }
-      return "2xl";
+      return '2xl';
     },
   },
 };
 </script>
 
 <template>
+  <img
+    src="src/assets/images/jefferson-santos-fCEJGBzAkrU-unsplash.jpg"
+    alt="Primer plano de un músico tocando una guitarra acústica."
+    class="fixed top-0 mx-auto w-full h-screen"
+  />
   <div class="flex flex-col items-center w-full">
     <div
       class="flex overflow-hidden relative mx-auto w-full h-screen text-center"
@@ -55,11 +60,11 @@ export default {
       <div
         class="absolute top-1/2 px-8 py-12 pt-24 w-full bg-gradient-to-b backdrop-blur-sm -translate-y-1/2 from-black/0 via-black/40 to-black/0 md:pt-0"
       >
-        <h1
+        <h2
           class="text-6xl font-bold text-white drop-shadow-xl md:text-7xl lg:text-8xl font-abril-fatface"
         >
           Adopta un músico
-        </h1>
+        </h2>
         <hr class="mx-auto my-8 w-1/2" />
         <p
           class="leading-7 text-gray-200 drop-shadow-md lg:text-xl 2xl:text-2xl"
@@ -200,7 +205,7 @@ export default {
           />
         </div>
         <div
-          class="flex-grow text-left pb-16 md:pl-16 lg:w-1/2 xl:max-w-[50vw]"
+          class="flex-grow text-left pb-16 md:px-16 lg:pr-0 lg:w-1/2 xl:max-w-[50vw]"
         >
           <div class="px-6">
             <h2

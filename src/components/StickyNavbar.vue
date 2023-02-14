@@ -1,5 +1,5 @@
 <script lang="ts">
-import Slider from "@vueform/slider";
+import Slider from '@vueform/slider';
 
 export default {
   components: {
@@ -26,16 +26,16 @@ export default {
   data() {
     return {
       filter: {
-        name: "",
+        name: '',
         instrument: this.instrument,
         age: [18, 100],
-        rol: "all",
+        rol: 'all',
       },
     };
   },
   methods: {
     updateFilter() {
-      this.$emit("update:filter", this.filter);
+      this.$emit('update:filter', this.filter);
     },
   },
   mounted() {
@@ -47,7 +47,9 @@ export default {
   <div
     class="flex sticky top-12 z-30 flex-col p-3 w-full backdrop-blur-lg bg-orange-500/80"
   >
-    <div class="flex justify-center">
+    <div
+      class="flex md:justify-center mx-auto w-[21rem] md:w-3/4 lg:w-auto flex-wrap"
+    >
       <fieldset>
         <label for="name">Nombre:</label>
         <input
@@ -55,7 +57,7 @@ export default {
           v-model="filter.name"
           type="text"
           name="name"
-          class="filter-input"
+          class="filter-input bg-orange-100"
         />
       </fieldset>
       <fieldset>
@@ -108,8 +110,7 @@ export default {
 
 <style scoped>
 .filter-input {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+  margin: 0.5rem;
   padding-left: 0.5rem;
   border-radius: 10px;
 }

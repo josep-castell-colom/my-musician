@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import Footer from "@/components/MainFooter.vue";
-import StickyNavbar from "@/components/StickyNavbar.vue";
-import { useMusiciansStore } from "@/stores/musicians";
-import type Musician from "@/types/Musician";
-import { onMounted, ref, watch } from "vue";
-import { useRoute } from "vue-router";
+import Footer from '@/components/MainFooter.vue';
+import StickyNavbar from '@/components/StickyNavbar.vue';
+import { useMusiciansStore } from '@/stores/musicians';
+import type Musician from '@/types/Musician';
+import { onMounted, ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
 const { fetchMusicians } = useMusiciansStore();
 const route = useRoute();
 const store = useMusiciansStore();
@@ -21,18 +21,18 @@ const store = useMusiciansStore();
 // });
 
 const searchFilter = ref({
-  name: "",
-  instrument: route.query.instrument || "all",
+  name: '',
+  instrument: route.query.instrument || 'all',
   age: [18, 100],
-  rol: route.query.rol || "all",
+  rol: route.query.rol || 'all',
 });
 
 function updateFilter() {
   searchFilter.value = {
-    name: "",
-    instrument: route.query.instrument || "all",
+    name: '',
+    instrument: route.query.instrument || 'all',
     age: [18, 100],
-    rol: route.query.rol || "all",
+    rol: route.query.rol || 'all',
   };
 }
 
@@ -42,27 +42,27 @@ function filterMusicians(filter: any) {
   let instrumentFilter = filter.instrument;
   let rolFilter = filter.rol;
   let ageFilter = filter.age;
-  if (nameFilter != "") {
-    tempMusicians = tempMusicians.filter((musician) => {
+  if (nameFilter != '') {
+    tempMusicians = tempMusicians.filter(musician => {
       return (
         musician.name.toLowerCase().includes(nameFilter.toLowerCase()) ||
         musician.lastname.toLowerCase().includes(nameFilter.toLowerCase())
       );
     });
   }
-  if (instrumentFilter != "all") {
-    tempMusicians = tempMusicians.filter((musician) => {
+  if (instrumentFilter != 'all') {
+    tempMusicians = tempMusicians.filter(musician => {
       return musician.instrument
         .toLowerCase()
         .includes(instrumentFilter.toLowerCase());
     });
   }
-  if (rolFilter != "all") {
-    tempMusicians = tempMusicians.filter((musician) => {
+  if (rolFilter != 'all') {
+    tempMusicians = tempMusicians.filter(musician => {
       return musician.rol.includes(rolFilter);
     });
   }
-  tempMusicians = tempMusicians.filter((musician) => {
+  tempMusicians = tempMusicians.filter(musician => {
     return musician.age > ageFilter[0] && musician.age < ageFilter[1];
   });
   filteredMusicians.value = tempMusicians;
@@ -72,12 +72,12 @@ function filterMusicians(filter: any) {
 await fetchMusicians();
 
 let musicians: Array<Musician> = store.musicians;
-const instruments = [...new Set(musicians.map((m) => m.instrument))];
+const instruments = [...new Set(musicians.map(m => m.instrument))];
 const rolsArrays: Array<string> = [];
 
-musicians.forEach((m) => {
-  m.rol.forEach((rol) => {
-    if (rol != "") {
+musicians.forEach(m => {
+  m.rol.forEach(rol => {
+    if (rol != '') {
       rolsArrays.push(rol);
     }
   });
@@ -107,7 +107,7 @@ watch(
   </div>
   <div v-else class="flex relative flex-col mt-12 w-full">
     <div
-      class="h-[40vh] w-full bg-orange-100 flex flex-col items-center justify-center"
+      class="h-[40vh] w-full bg-orange-100 flex flex-col text-center items-center justify-center"
     >
       <h3 class="mx-auto text-4xl font-bold text-gray-800">
         {{ store.musicians.length }} músicos confían en nosotros

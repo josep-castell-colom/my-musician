@@ -7,23 +7,28 @@ export default {
     };
   },
   created() {
-    window.addEventListener("resize", this.checkWidth);
+    window.addEventListener('resize', this.checkWidth);
   },
   mounted() {
     this.checkWidth();
   },
   unmounted() {
-    window.removeEventListener("resize", this.checkWidth);
+    window.removeEventListener('resize', this.checkWidth);
   },
   methods: {
     userAuth(): boolean {
-      return localStorage.getItem("user") ? true : false;
+      return localStorage.getItem('musicianAuthUser') ? true : false;
     },
     checkWidth() {
       this.burguer = window.innerWidth <= 1024;
     },
     toggleBurguerActive() {
       this.burguerActive = !this.burguerActive;
+    },
+    logOutHandler() {
+      this.toggleBurguerActive();
+      if (confirm('¿Desea cerrar sesión?'))
+        localStorage.removeItem('musicianAuthUser');
     },
   },
 };
@@ -143,21 +148,35 @@ export default {
         </div>
       </nav>
       <div id="nav-separator" class="w-px h-1/2 bg-white"></div>
-      <div id="nav-user" class="flex items-center mx-4">
-        <router-link
-          :to="{ name: 'login' }"
-          @click="toggleBurguerActive"
-          v-if="!userAuth()"
-          class="inline-block text-xs transition-transform duration-300 hover:underline hover:scale-110"
-          >Log in</router-link
-        >
-        <router-link
-          :to="{ name: 'register' }"
-          @click="toggleBurguerActive"
-          v-if="!userAuth()"
-          class="inline-block ml-2 text-xs transition-transform duration-300 hover:underline hover:scale-110"
-          >Register</router-link
-        >
+      <div class="flex items-center mx-4">
+        <div v-if="userAuth()" class="nav-user flex items-center">
+          <router-link
+            :to="{ name: 'dashboard' }"
+            @click="toggleBurguerActive"
+            class="inline-block text-xs transition-transform duration-300 hover:underline hover:scale-110"
+            >Dashboard</router-link
+          >
+          <router-link
+            :to="{ name: 'home' }"
+            @click="logOutHandler"
+            class="inline-block ml-2 text-xs transition-transform duration-300 hover:underline hover:scale-110"
+            >Log out</router-link
+          >
+        </div>
+        <div v-else class="nav-user flex items-center">
+          <router-link
+            :to="{ name: 'login' }"
+            @click="toggleBurguerActive"
+            class="inline-block text-xs transition-transform duration-300 hover:underline hover:scale-110"
+            >Log in</router-link
+          >
+          <router-link
+            :to="{ name: 'register' }"
+            @click="toggleBurguerActive"
+            class="inline-block ml-2 text-xs transition-transform duration-300 hover:underline hover:scale-110"
+            >Register</router-link
+          >
+        </div>
       </div>
     </div>
     <div
@@ -211,12 +230,12 @@ export default {
   height: 1px;
   margin: 10vh 0;
 }
-.burguerOn.burguerShown #nav-user {
+.burguerOn.burguerShown .nav-user {
   flex-direction: column;
   justify-content: space-around;
   height: calc(20vh);
 }
-.burguerOn.burguerShown #nav-user * {
+.burguerOn.burguerShown .nav-user * {
   font-size: 1.5rem;
   margin: 0;
 }
