@@ -1,51 +1,71 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue';
-import HorizontalCard from '@/components/HorizontalCard.vue';
-import { useUsersStore } from '@/stores/users';
-import { useMusiciansStore } from '@/stores/musicians';
-import type Musician from '@/types/Musician';
-const { checkAuthUser } = useUsersStore();
-const { fetchMusician } = useMusiciansStore();
-await checkAuthUser();
-const usersStore = useUsersStore();
-const authUser = usersStore.authUser.value;
-const musiciansStore = useMusiciansStore();
-const myMusicians = ref(new Array<Musician>());
+import { onMounted, ref, watchEffect, watch } from "vue";
+import { storeToRefs } from "pinia";
 
-async function getMyMusicians() {
-  const authUserMusicians = authUser.myMusicians;
-  if (authUserMusicians) {
-    if (authUserMusicians.length > 0) {
-      myMusicians.value = new Array<Musician>();
-      authUserMusicians.forEach(async (m: number) => {
-        await fetchMusician(m);
-        myMusicians.value.push(musiciansStore.musician);
-      });
-    }
-  }
+import HorizontalCard from "@/components/HorizontalCard.vue";
+import { useUsersStore } from "@/stores/users";
+// import { useMusiciansStore } from "@/stores/musicians";
+// import type Musician from "@/types/Musician";
+
+const { checkAuthUser, getAuthUserMusicians } = useUsersStore();
+// const { fetchMusician } = useMusiciansStore();
+const usersStore = useUsersStore();
+const { authUser, authUserMusicians } = storeToRefs(usersStore);
+
+await checkAuthUser();
+await getAuthUserMusicians();
+
+// const authUser = ref(usersStore.authUser);
+// const authUserMusicians = usersStore.authUser.value.myMusicians;
+// const musiciansStore = useMusiciansStore();
+// const myMusicians = ref(new Array<Musician>());
+
+// async function getMyMusicians(musicians: Array<number>) {
+//   if (musicians) {
+//     if (musicians.length > 0) {
+//       myMusicians.value = new Array<Musician>();
+//       musicians.forEach(async (m: number) => {
+//         await fetchMusician(m);
+//         myMusicians.value.push(musiciansStore.musician);
+//       });
+//     }
+//   }
+// }
+
+async function reload() {
+  await checkAuthUser();
+  await getAuthUserMusicians();
 }
 
-onMounted(() => {
-  getMyMusicians();
+onMounted(async () => {
+  // await getMyMusicians();
 });
 
-watch(usersStore.authUser, () => {
-  getMyMusicians();
+watch(authUser, async () => {
+  // await getMyMusicians(authUser.value.value.myMusicians);
+  console.log(authUser.value);
 });
 </script>
 <template>
-  <div class="max-w-5xl mx-auto">
+  <div class="mx-auto max-w-5xl">
     <div
-      class="flex w-full justify-between items-center bg-white m-6 mt-20 py-6 px-28 rounded-lg"
+      class="flex justify-between items-center px-28 py-6 m-6 mt-20 w-full bg-white rounded-lg"
     >
-      <h2 class="text-lg font-bold">Bienvenido, {{ authUser.name }}!</h2>
+      <h2 class="text-lg font-bold">Bienvenido, {{ authUser.value.name }}!</h2>
       <p class="text-sm text-gray-600">Editar perfil</p>
     </div>
-    <div v-if="myMusicians" class="bg-white w-full m-6 p-6 px-28 rounded-lg">
-      <h3 class="text-xl my-8">MyMusicians</h3>
-      <div class="flex flex-col items-center justify-center">
-        <div v-for="musician in myMusicians" class="m-6">
-          <HorizontalCard :key="musician['id']" :id="musician['id']">
+    <div
+      v-if="authUserMusicians"
+      class="p-6 px-28 m-6 w-full bg-white rounded-lg"
+    >
+      <h3 class="my-8 text-xl">MyMusicians</h3>
+      <div class="flex flex-col justify-center items-center">
+        <div
+          v-for="musician in authUserMusicians"
+          :key="musician['id']"
+          class="m-6"
+        >
+          <HorizontalCard :id="musician['id']" @unsubscribe="reload()">
             <template #img
               ><img
                 class="absolute top-0 max-h-none"

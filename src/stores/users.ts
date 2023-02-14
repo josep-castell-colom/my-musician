@@ -1,11 +1,17 @@
-import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import { defineStore } from "pinia";
+import { ref } from "vue";
 
-export const useUsersStore = defineStore('users', () => {
-  const api = 'http://localhost:3000/';
+import type Musician from "../types/Musician";
+import { useMusiciansStore } from "./musicians";
+const musiciansStore = useMusiciansStore();
+const { fetchMusician } = useMusiciansStore();
+
+export const useUsersStore = defineStore("users", () => {
+  const api = "http://localhost:3000/";
   const users = ref();
   const user = ref();
   const authUser = ref();
+  const authUserMusicians = ref();
   const loading = ref(false);
   const error = ref();
 
@@ -14,7 +20,7 @@ export const useUsersStore = defineStore('users', () => {
     loading.value = true;
 
     try {
-      users.value = await fetch(`${api}users`).then(res => res.json());
+      users.value = await fetch(`${api}users`).then((res) => res.json());
     } catch (err) {
       error.value = err;
     } finally {
@@ -26,7 +32,7 @@ export const useUsersStore = defineStore('users', () => {
     loading.value = true;
 
     try {
-      user.value = await fetch(`${api}users/${id}`).then(res => res.json());
+      user.value = await fetch(`${api}users/${id}`).then((res) => res.json());
     } catch (err) {
       error.value = err;
     } finally {
@@ -39,11 +45,11 @@ export const useUsersStore = defineStore('users', () => {
 
     try {
       user.value = fetch(`${api}users`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),
       })
-        .then(res => res.json())
+        .then((res) => res.json())
         .then(() => {
           login(user.email, user.password);
         });
@@ -59,10 +65,10 @@ export const useUsersStore = defineStore('users', () => {
 
     try {
       user.value = fetch(`${api}users/${userId}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ myMusicians: musicians }),
-      }).then(res => res.json());
+      }).then((res) => res.json());
     } catch (err) {
       error.value = err;
     } finally {
@@ -70,17 +76,30 @@ export const useUsersStore = defineStore('users', () => {
     }
   }
 
+  async function getAuthUserMusicians() {
+    await checkAuthUser();
+    const musicians = authUser.value.value.myMusicians;
+    if (musicians) {
+      if (musicians.length > 0) {
+        authUserMusicians.value = new Array<Musician>();
+        musicians.forEach(async (m: number) => {
+          await fetchMusician(m);
+          authUserMusicians.value.push(musiciansStore.musician);
+        });
+      }
+    }
+  }
+
   async function login(email: string, password: string) {
     await fetchUsers();
-    console.log(email, password);
     for (let i = 0; i < users.value.length; i++) {
       if (
         users.value[i].email === email &&
         users.value[i].password === password
       ) {
-        localStorage.setItem('musicianAuthUser', users.value[i].id);
+        localStorage.setItem("musicianAuthUser", users.value[i].id);
         authUser.value = users.value[i];
-        location.href = '/dashboard';
+        location.href = "/dashboard";
         return true;
       }
     }
@@ -88,13 +107,13 @@ export const useUsersStore = defineStore('users', () => {
   }
 
   function logOut() {
-    localStorage.removeItem('musicianAuthUser');
+    localStorage.removeItem("musicianAuthUser");
     authUser.value = null;
   }
 
   async function checkAuthUser() {
-    if (localStorage.getItem('musicianAuthUser')) {
-      const userId: number = parseInt(localStorage.getItem('musicianAuthUser'));
+    if (localStorage.getItem("musicianAuthUser")) {
+      const userId: number = parseInt(localStorage.getItem("musicianAuthUser"));
       await fetchUser(userId);
       authUser.value = user;
     }
@@ -107,8 +126,6 @@ export const useUsersStore = defineStore('users', () => {
   }
 
   async function removeMusician(user: any, musicianId: number) {
-    console.log('remove');
-    console.log(user, musicianId);
     const tempArray = user.myMusicians.filter((m: number) => m != musicianId);
     await patchUser(user.id, tempArray);
   }
@@ -122,11 +139,13 @@ export const useUsersStore = defineStore('users', () => {
     users,
     user,
     authUser,
+    authUserMusicians,
     loading,
     error,
     fetchUsers,
     fetchUser,
     postUser,
+    getAuthUserMusicians,
     login,
     checkAuthUser,
     logOut,
