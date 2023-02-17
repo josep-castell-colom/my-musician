@@ -16,14 +16,21 @@
       "lastname": "Ivorra",
       "email": "rafa@hola.com",
       "password": "patata123",
-      "id": 2
+      "id": 2,
+      "myMusicians": [
+        19,
+        23
+      ]
     },
     {
       "name": "Huberto",
       "lastname": "Martin",
       "email": "huberto@hola.com",
       "password": "hola",
-      "id": 3
+      "id": 3,
+      "myMusicians": [
+        11
+      ]
     },
     {
       "name": "Carlos",

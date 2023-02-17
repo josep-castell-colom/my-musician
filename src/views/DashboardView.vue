@@ -1,49 +1,31 @@
 <script setup lang="ts">
-import { onMounted, ref, watchEffect, watch } from "vue";
 import { storeToRefs } from "pinia";
 
 import HorizontalCard from "@/components/HorizontalCard.vue";
 import { useUsersStore } from "@/stores/users";
-// import { useMusiciansStore } from "@/stores/musicians";
-// import type Musician from "@/types/Musician";
+import { onBeforeMount } from "vue";
 
 const { checkAuthUser, getAuthUserMusicians } = useUsersStore();
-// const { fetchMusician } = useMusiciansStore();
 const usersStore = useUsersStore();
 const { authUser, authUserMusicians } = storeToRefs(usersStore);
-
-await checkAuthUser();
-await getAuthUserMusicians();
-
-// const authUser = ref(usersStore.authUser);
-// const authUserMusicians = usersStore.authUser.value.myMusicians;
-// const musiciansStore = useMusiciansStore();
-// const myMusicians = ref(new Array<Musician>());
-
-// async function getMyMusicians(musicians: Array<number>) {
-//   if (musicians) {
-//     if (musicians.length > 0) {
-//       myMusicians.value = new Array<Musician>();
-//       musicians.forEach(async (m: number) => {
-//         await fetchMusician(m);
-//         myMusicians.value.push(musiciansStore.musician);
-//       });
-//     }
-//   }
-// }
 
 async function reload() {
   await checkAuthUser();
   await getAuthUserMusicians();
 }
 
-onMounted(async () => {
-  // await getMyMusicians();
-});
+async function authOrRedirect() {
+  try {
+    await checkAuthUser();
+    await getAuthUserMusicians();
+  } catch (err) {
+    console.log(err);
+    window.location.href = "/login";
+  }
+}
 
-watch(authUser, async () => {
-  // await getMyMusicians(authUser.value.value.myMusicians);
-  console.log(authUser.value);
+onBeforeMount(async () => {
+  await authOrRedirect();
 });
 </script>
 <template>
@@ -58,7 +40,7 @@ watch(authUser, async () => {
       v-if="authUserMusicians"
       class="p-6 px-28 m-6 w-full bg-white rounded-lg"
     >
-      <h3 class="my-8 text-xl">MyMusicians</h3>
+      <h3 class="my-8 text-xl">MyMusicians:</h3>
       <div class="flex flex-col justify-center items-center">
         <div
           v-for="musician in authUserMusicians"

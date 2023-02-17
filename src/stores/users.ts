@@ -116,11 +116,19 @@ export const useUsersStore = defineStore("users", () => {
       const userId: number = parseInt(localStorage.getItem("musicianAuthUser"));
       await fetchUser(userId);
       authUser.value = user;
+      return true;
+    } else {
+      return false;
     }
   }
 
   async function addMusician(user: any, musicianId: number) {
-    const tempArray = user.myMusicians;
+    let tempArray;
+    if (user.myMusicians) {
+      tempArray = user.myMusicians;
+    } else {
+      tempArray = new Array<number>();
+    }
     tempArray.push(musicianId);
     await patchUser(user.id, tempArray);
   }
@@ -131,7 +139,7 @@ export const useUsersStore = defineStore("users", () => {
   }
 
   function hasMusician(user: any, musicianId: number) {
-    if (user.myMusicians.includes(musicianId)) return true;
+    if (user.myMusicians && user.myMusicians.includes(musicianId)) return true;
     return false;
   }
 
