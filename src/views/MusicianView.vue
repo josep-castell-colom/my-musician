@@ -20,7 +20,7 @@ await fetchMusician(id);
 await checkAuthUser();
 
 const musiciansStoreError = musiciansStore.error;
-const musician: Musician = musiciansStore.musician;
+const musician = ref(musiciansStore.musician);
 const authUser = ref();
 
 try {
@@ -30,17 +30,16 @@ try {
 }
 
 function getFullName() {
-  return `${musician.name} ${musician.lastname}`;
+  return `${musician.value.name} ${musician.value.lastname}`;
 }
 
 function getMdImgUrl() {
-  return `../src/assets/images/musicians/${musician.imgName}-md.jpg`;
+  return `../src/assets/images/musicians/${musician.value.imgName}-md.jpg`;
 }
 
 function getSmImgUrl() {
-  return `../src/assets/images/musicians/${musician.imgName}-sm.jpg`;
+  return `../src/assets/images/musicians/${musician.value.imgName}-sm.jpg`;
 }
-console.log(authUser.value);
 </script>
 
 <template>
@@ -119,31 +118,52 @@ console.log(authUser.value);
         <div
           class="w-1/3 text-center p-12 flex flex-col justify-center items-center"
         >
+          <h3 class="font-bold text-2xl">Apadrina a este músico</h3>
+          <p class="mt-3 lg:text-lg">
+            Actualmente tiene {{ musician.patrons.length }} mecenas
+          </p>
           <div v-if="authUser && !hasMusician(authUser, musician.id)">
-            <h3 class="font-bold text-2xl">Apadrina a este músico</h3>
-            <p class="mt-3 lg:text-lg">
-              Actualmente tiene {{ musician.patrons.length }} mecenas
-            </p>
             <ul class="mt-8 flex flex-col justify-around items-center">
-              <li @click="addMusician(authUser, musician.id)" class="mt-3">
+              <li
+                @click="addMusician(authUser, musician.id)"
+                class="mt-3 cursor-pointer"
+              >
                 1€ al mes
               </li>
-              <li @click="addMusician(authUser, musician.id)" class="mt-3">
+              <li
+                @click="addMusician(authUser, musician.id)"
+                class="mt-3 cursor-pointer"
+              >
                 5€ al mes
               </li>
-              <li @click="addMusician(authUser, musician.id)" class="mt-3">
+              <li
+                @click="addMusician(authUser, musician.id)"
+                class="mt-3 cursor-pointer"
+              >
                 15€ al mes
               </li>
-              <li @click="addMusician(authUser, musician.id)" class="mt-3">
+              <li
+                @click="addMusician(authUser, musician.id)"
+                class="mt-3 cursor-pointer"
+              >
                 50€ al mes
               </li>
-              <li @click="addMusician(authUser, musician.id)" class="mt-3">
+              <li
+                @click="addMusician(authUser, musician.id)"
+                class="mt-3 cursor-pointer"
+              >
                 100€ al mes
               </li>
-              <li @click="addMusician(authUser, musician.id)" class="mt-3">
+              <li
+                @click="addMusician(authUser, musician.id)"
+                class="mt-3 cursor-pointer"
+              >
                 Haz una donación puntual
               </li>
             </ul>
+          </div>
+          <div v-if="authUser && hasMusician(authUser, musician.id)">
+            <p class="md:text-xl mt-12">Ya ayudas a este músico</p>
           </div>
         </div>
       </div>

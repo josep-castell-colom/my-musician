@@ -8,7 +8,9 @@
       "password": "hola",
       "myMusicians": [
         2,
-        15
+        15,
+        18,
+        3
       ]
     },
     {
@@ -16,6 +18,7 @@
       "lastname": "Ivorra",
       "email": "rafa@hola.com",
       "password": "patata123",
+      "myMusicians": [],
       "id": 2
     },
     {
@@ -23,6 +26,7 @@
       "lastname": "Martin",
       "email": "huberto@hola.com",
       "password": "hola",
+      "myMusicians": [],
       "id": 3
     },
     {
@@ -30,6 +34,7 @@
       "lastname": "Herrera",
       "email": "carlos@hola.com",
       "password": "hola",
+      "myMusicians": [],
       "id": 4
     },
     {
@@ -37,6 +42,7 @@
       "lastname": "Pérez",
       "email": "rperez@hola.com",
       "password": "hola",
+      "myMusicians": [],
       "id": 5
     },
     {
@@ -44,6 +50,7 @@
       "lastname": "Santandreu",
       "email": "mateu@hola.com",
       "password": "hola",
+      "myMusicians": [],
       "id": 6
     }
   ],
@@ -60,9 +67,7 @@
       ],
       "description": "Tengo que hacer páginas web para labrarme un futuro prometedor.",
       "imgName": "giussep",
-      "patrons": [],
-      "email": "josep@hola.com",
-      "password": "hola"
+      "patrons": []
     },
     {
       "id": 2,
@@ -90,7 +95,9 @@
       ],
       "description": "Soy el mejor saxofonista de mi pueblo, pero tengo que tocar en la calle para ganar algo.",
       "imgName": "daniel",
-      "patrons": []
+      "patrons": [
+        1
+      ]
     },
     {
       "id": 4,
@@ -303,7 +310,9 @@
       ],
       "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
       "imgName": "mwa",
-      "patrons": []
+      "patrons": [
+        1
+      ]
     },
     {
       "id": 19,
