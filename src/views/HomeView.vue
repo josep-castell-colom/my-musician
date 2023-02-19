@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import CardsCarousel from '@/components/CardsCarousel.vue';
 import Footer from '@/components/MainFooter.vue';
+import DarkButton from '@/components/DarkButton.vue';
+import LightButton from '@/components/LightButton.vue';
 </script>
 <script lang="ts">
 export default {
@@ -108,11 +110,7 @@ export default {
         </Suspense>
       </div>
       <router-link :to="{ name: 'musicians.index' }">
-        <button
-          class="p-4 font-bold text-white bg-orange-800 rounded-full transition-transform duration-300 hover:drop-shadow-lg hover:scale-105 hover:bg-orange-600"
-        >
-          Sigue buscando
-        </button>
+        <DarkButton>Sigue buscando</DarkButton>
       </router-link>
     </div>
     <svg
@@ -169,11 +167,7 @@ export default {
           <span class="p-2 font-bold bg-gray-700 rounded-lg">digna</span>.
         </p>
         <router-link to="/explore">
-          <button
-            class="p-4 mt-12 font-bold text-white bg-orange-600 rounded-full border-2 border-orange-800 border-solid transition-transform duration-300 hover:drop-shadow-lg hover:scale-105"
-          >
-            Apadrina un músico
-          </button>
+          <LightButton class="mt-12"> Apadrina un músico </LightButton>
         </router-link>
       </div>
     </div>
@@ -243,18 +237,14 @@ export default {
           </div>
           <div class="mt-12 2xl:px-6">
             <router-link to="/explore">
-              <button
-                class="p-4 w-full font-bold text-white bg-orange-600 rounded-full border-2 border-solid transition-transform duration-300 2xl:w-auto hover:drop-shadow-lg hover:scale-105"
+              <LightButton class="w-full 2xl:w-auto"
+                >Salva un músico</LightButton
               >
-                Salva un músico
-              </button>
             </router-link>
             <router-link to="/explore">
-              <button
-                class="p-4 mt-4 w-full font-bold text-white bg-orange-800 rounded-full border-2 border-solid transition-transform duration-300 2xl:ml-4 2xl:w-auto hover:drop-shadow-lg hover:scale-105 transition-color hover:bg-orange-600"
+              <DarkButton class="mt-4 w-full 2xl:ml-4 2xl:w-auto"
+                >Salva la cultura</DarkButton
               >
-                Salva la cultura
-              </button>
             </router-link>
           </div>
         </div>
