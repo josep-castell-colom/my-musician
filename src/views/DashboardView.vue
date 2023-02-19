@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { storeToRefs } from "pinia";
+import { storeToRefs } from 'pinia';
 
-import HorizontalCard from "@/components/HorizontalCard.vue";
-import { useUsersStore } from "@/stores/users";
-import { onBeforeMount } from "vue";
+import HorizontalCard from '@/components/HorizontalCard.vue';
+import { useUsersStore } from '@/stores/users';
+import { onBeforeMount } from 'vue';
 
-const { checkAuthUser, getAuthUserMusicians } = useUsersStore();
+const { checkAuthUser, getAuthUserMusicians, deleteUser } = useUsersStore();
 const usersStore = useUsersStore();
 const { authUser, authUserMusicians } = storeToRefs(usersStore);
 
@@ -20,7 +20,15 @@ async function authOrRedirect() {
     await getAuthUserMusicians();
   } catch (err) {
     console.log(err);
-    window.location.href = "/login";
+    window.location.href = '/login';
+  }
+}
+
+async function deleteAccountHandler() {
+  if (
+    confirm('¿Realmente desea eliminar su cuenta? Perderá toda su información.')
+  ) {
+    deleteUser(authUser.value.value.id);
   }
 }
 
@@ -34,7 +42,9 @@ onBeforeMount(async () => {
       class="flex justify-between items-center px-28 py-6 m-6 mt-20 w-full bg-white rounded-lg"
     >
       <h2 class="text-lg font-bold">Bienvenido, {{ authUser.value.name }}!</h2>
-      <p class="text-sm text-gray-600">Editar perfil</p>
+      <p @click="deleteAccountHandler()" class="text-sm text-gray-600">
+        Eliminar cuenta
+      </p>
     </div>
     <div
       v-if="authUserMusicians"

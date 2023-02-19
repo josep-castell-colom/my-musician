@@ -76,6 +76,27 @@ export const useUsersStore = defineStore('users', () => {
     }
   }
 
+  async function deleteUser(userId: number) {
+    loading.value = true;
+
+    try {
+      await fetch(`${api}users/${userId}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+      }).then(res => res.json());
+    } catch (err) {
+      error.value = err;
+    } finally {
+      loading.value = false;
+    }
+
+    if (!error.value) {
+      authUser.value = null;
+      localStorage.removeItem('musicianAuthUser');
+      location.href = '/';
+    }
+  }
+
   async function patchMusician(musicianId: number, newPatrons: Array<number>) {
     loading.value = true;
 
@@ -178,6 +199,7 @@ export const useUsersStore = defineStore('users', () => {
     fetchUsers,
     fetchUser,
     postUser,
+    deleteUser,
     getAuthUserMusicians,
     login,
     checkAuthUser,

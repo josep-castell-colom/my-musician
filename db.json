@@ -6,7 +6,12 @@
       "lastname": "Castell",
       "email": "josep@hola.com",
       "password": "hola",
-      "myMusicians": [2, 15, 18, 3]
+      "myMusicians": [
+        2,
+        15,
+        18,
+        3
+      ]
     },
     {
       "name": "Rafa",
@@ -14,7 +19,10 @@
       "email": "rafa@hola.com",
       "password": "patata123",
       "id": 2,
-      "myMusicians": [19, 23]
+      "myMusicians": [
+        19,
+        23
+      ]
     },
     {
       "name": "Huberto",
@@ -22,7 +30,9 @@
       "email": "huberto@hola.com",
       "password": "hola",
       "id": 3,
-      "myMusicians": [11]
+      "myMusicians": [
+        11
+      ]
     },
     {
       "name": "Carlos",
@@ -56,7 +66,10 @@
       "lastname": "Kastei",
       "age": 33,
       "instrument": "Bajo eléctrico",
-      "rol": ["De sesión", "Acompañante"],
+      "rol": [
+        "De sesión",
+        "Acompañante"
+      ],
       "description": "Tengo que hacer páginas web para labrarme un futuro prometedor.",
       "imgName": "giussep",
       "patrons": []
@@ -67,10 +80,14 @@
       "lastname": "Gaviota",
       "age": 22,
       "instrument": "Guitarra española",
-      "rol": ["Cantautora"],
+      "rol": [
+        "Cantautora"
+      ],
       "description": "Adoro tocar la guitarra cuando hace sol, rodeada de mis queridas plantitas verdes.",
       "imgName": "carlota",
-      "patrons": [1]
+      "patrons": [
+        1
+      ]
     },
     {
       "id": 3,
@@ -78,10 +95,14 @@
       "lastname": "Gonzáles",
       "age": 29,
       "instrument": "Saxo tenor",
-      "rol": ["Solista"],
+      "rol": [
+        "Solista"
+      ],
       "description": "Soy el mejor saxofonista de mi pueblo, pero tengo que tocar en la calle para ganar algo.",
       "imgName": "daniel",
-      "patrons": [1]
+      "patrons": [
+        1
+      ]
     },
     {
       "id": 4,
@@ -89,7 +110,11 @@
       "lastname": "Fletcher",
       "age": 28,
       "instrument": "Piano y voz",
-      "rol": ["Cantautora", "De sesión", "Acompañante"],
+      "rol": [
+        "Cantautora",
+        "De sesión",
+        "Acompañante"
+      ],
       "description": "Soy pianista, cantante y compositora, disfruto creando canciones nuevas. También sé tocar un poco la guitarra.",
       "imgName": "jessica",
       "patrons": []
@@ -100,7 +125,10 @@
       "lastname": "Caray",
       "age": 24,
       "instrument": "Violin",
-      "rol": ["De sesión", "Solista"],
+      "rol": [
+        "De sesión",
+        "Solista"
+      ],
       "description": "Mis padres me apuntaron a tocar el violín pero no me gustaba. Ahora me encanta, sobre todo en el bosque.",
       "imgName": "maria",
       "patrons": []
@@ -111,7 +139,9 @@
       "lastname": "Montiel",
       "age": 20,
       "instrument": "Guitarra eléctrica",
-      "rol": ["Acompañante"],
+      "rol": [
+        "Acompañante"
+      ],
       "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
       "imgName": "miguel",
       "patrons": []
@@ -122,7 +152,10 @@
       "lastname": "Ghatasheh",
       "age": 34,
       "instrument": "Contrabajo",
-      "rol": ["De sesión", "Acompañante"],
+      "rol": [
+        "De sesión",
+        "Acompañante"
+      ],
       "description": "Soy músico autodidacta. Me gusta el swing y la música latin. Me gano la vida tocando en la calle.",
       "imgName": "abdullah",
       "patrons": []
@@ -133,7 +166,11 @@
       "lastname": "Guerra",
       "age": 35,
       "instrument": "Laúd",
-      "rol": ["De sesión", "Acompañante", "Solista"],
+      "rol": [
+        "De sesión",
+        "Acompañante",
+        "Solista"
+      ],
       "description": "Aprendí a tocar el laúd con el de mi difunto abuelo. Luego me compré uno eléctrico.",
       "imgName": "anderson",
       "patrons": []
@@ -144,7 +181,10 @@
       "lastname": "De Lucida",
       "age": 22,
       "instrument": "Guitarra española",
-      "rol": ["De sesión", "Solista"],
+      "rol": [
+        "De sesión",
+        "Solista"
+      ],
       "description": "Mi vida es el flamenco. Vivo por la música y para la música.",
       "imgName": "paco",
       "patrons": []
@@ -155,7 +195,10 @@
       "lastname": "Wessi",
       "age": 35,
       "instrument": "Batería",
-      "rol": ["De sesión", "Acompañante"],
+      "rol": [
+        "De sesión",
+        "Acompañante"
+      ],
       "description": "Me gusta el fútbol y tocar la batería. A veces paso las tardes en el estudio de mi amigo y me deja tocar su batería.",
       "imgName": "leo",
       "patrons": []
@@ -166,7 +209,9 @@
       "lastname": "De Giovanni",
       "age": 26,
       "instrument": "DJ",
-      "rol": [""],
+      "rol": [
+        ""
+      ],
       "description": "Mi principal mercado es la BBC (bodas, bautizos y comuniones) pero también pincho en todo tipo de eventos privados.",
       "imgName": "davide",
       "patrons": []
@@ -177,7 +222,11 @@
       "lastname": "Slope",
       "age": 28,
       "instrument": "Percusión",
-      "rol": ["De sesión", "Acompañante", "Solista"],
+      "rol": [
+        "De sesión",
+        "Acompañante",
+        "Solista"
+      ],
       "description": "La percusión da el ritmo a la vida. Los latidos de mi corazón son la pulsación de mi existencia.",
       "imgName": "emmanuel",
       "patrons": []
@@ -188,7 +237,11 @@
       "lastname": "Tejedor",
       "age": 39,
       "instrument": "Bajo eléctrico",
-      "rol": ["De sesión", "Acompañante", "Solista"],
+      "rol": [
+        "De sesión",
+        "Acompañante",
+        "Solista"
+      ],
       "description": "Toco el bajo y tengo un estudio de grabación en casa.",
       "imgName": "carlos",
       "patrons": []
@@ -199,7 +252,10 @@
       "lastname": "Colson",
       "age": 27,
       "instrument": "Batería",
-      "rol": ["De sesión", "Acompañante"],
+      "rol": [
+        "De sesión",
+        "Acompañante"
+      ],
       "description": "Tengo una batería en el garaje de mi casa, al lado del tractor. Me encanta Green Day.",
       "imgName": "isaiah",
       "patrons": []
@@ -210,10 +266,15 @@
       "lastname": "Sutton",
       "age": 78,
       "instrument": "Acordeón",
-      "rol": ["De sesión", "Acompañante"],
+      "rol": [
+        "De sesión",
+        "Acompañante"
+      ],
       "description": "Llevo 50 años tocando el acordeón empero todavía no he cotizado los 365 días para pedir el paro.",
       "imgName": "james",
-      "patrons": [1]
+      "patrons": [
+        1
+      ]
     },
     {
       "id": 16,
@@ -221,7 +282,9 @@
       "lastname": "Rocha",
       "age": 23,
       "instrument": "Voz",
-      "rol": ["Solista"],
+      "rol": [
+        "Solista"
+      ],
       "description": "Brrr! Grr!",
       "imgName": "kaique",
       "patrons": []
@@ -232,7 +295,10 @@
       "lastname": "Hesthaven",
       "age": 31,
       "instrument": "Batería",
-      "rol": ["De sesión", "Acompañante"],
+      "rol": [
+        "De sesión",
+        "Acompañante"
+      ],
       "description": "Ik speelde een keer een concert en er was veel rook.",
       "imgName": "mantas",
       "patrons": []
@@ -243,10 +309,15 @@
       "lastname": "Bonje",
       "age": 20,
       "instrument": "Voz",
-      "rol": ["Líder", "Solista"],
+      "rol": [
+        "Líder",
+        "Solista"
+      ],
       "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
       "imgName": "mwa",
-      "patrons": [1]
+      "patrons": [
+        1
+      ]
     },
     {
       "id": 19,
@@ -254,10 +325,15 @@
       "lastname": "Caige",
       "age": 19,
       "instrument": "Bajo eléctrico",
-      "rol": ["De sesión", "Acompañante"],
+      "rol": [
+        "De sesión",
+        "Acompañante"
+      ],
       "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
       "imgName": "john",
-      "patrons": [1]
+      "patrons": [
+        1
+      ]
     },
     {
       "id": 20,
@@ -265,7 +341,10 @@
       "lastname": "Hudson",
       "age": 21,
       "instrument": "Bajo eléctrico",
-      "rol": ["De sesión", "Acompañante"],
+      "rol": [
+        "De sesión",
+        "Acompañante"
+      ],
       "description": "Toqué en las fiestas de mi pueblo y me hicieron esta foto tan bonita. Me pagaron con la foto y dos consumiciones.",
       "imgName": "sandra",
       "patrons": []
@@ -276,7 +355,9 @@
       "lastname": "Trillet",
       "age": 28,
       "instrument": "Ukelele",
-      "rol": ["Acompañante"],
+      "rol": [
+        "Acompañante"
+      ],
       "description": "Somewhere over the rainbow way up high there's a land that I heard of once in a lullaby.",
       "imgName": "thibault",
       "patrons": []
@@ -287,7 +368,9 @@
       "lastname": "Trillet",
       "age": 24,
       "instrument": "Voz",
-      "rol": ["Líder"],
+      "rol": [
+        "Líder"
+      ],
       "description": "Me gusta el rap y la poesía, si me dieran de comer lo haría cada día.",
       "imgName": "ahmed",
       "patrons": []
@@ -298,7 +381,9 @@
       "lastname": "Cobalt",
       "age": 23,
       "instrument": "Bajo eléctrico",
-      "rol": ["Acompañante"],
+      "rol": [
+        "Acompañante"
+      ],
       "description": "Ya sé hacer quintas y octavas, mi estilo es el punk.",
       "imgName": "kurt",
       "patrons": []
@@ -309,7 +394,9 @@
       "lastname": "Canales",
       "age": 25,
       "instrument": "Saxo alto",
-      "rol": ["Solista"],
+      "rol": [
+        "Solista"
+      ],
       "description": "Me gusta mucho la música e ir a la piscina. Mis gafas y mi saxo siempre me acompañan.",
       "imgName": "antonio",
       "patrons": []
